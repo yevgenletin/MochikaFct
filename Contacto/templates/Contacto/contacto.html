@@ -1,0 +1,51 @@
+
+{% extends "Home/base.html" %}
+{% load crispy_forms_tags%}
+{% block title %} Inicio {% endblock %}
+{% load static %}
+
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-12">
+    <div class="section-container-spacer">
+      <h1>Contact</h1>
+        {%if 'valido' in request.GET %}
+          <div class="alert alert-success" role="alert">
+            Se ha enviado el correo!!
+          </div>
+        {% endif %}
+        {%if 'novalido' in request.GET %}
+          <div class="alert alert-danger" role="alert">
+            Email no enviado!!!
+          </div>
+        {% endif %}
+    </div>
+    <div class="section-container-spacer">
+      <table>
+        <form action=""  method="POST">
+          <div class="row">
+              <div class="col-md-6 form-group">
+                {%  csrf_token %}
+                {% crispy miFormulario %}
+              </div>
+          </div>
+        </form>
+      </table>
+      <div class="col-md-6">
+        <h3>Follow me on social networks</h3>
+        <a href="https://www.linkedin.com/" title="" class="fa-icon">
+          <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com/" title="" class="fa-icon">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a href="https://dribbble.com/" title="" class="fa-icon">
+          <i class="fa fa-dribbble"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
