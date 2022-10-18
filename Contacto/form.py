@@ -2,12 +2,18 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from django.urls import reverse_lazy
+from pprint import pprint
 
 class Formulario(forms.Form):
 
     name = forms.CharField(label="nombre:", required=True, widget=forms.TextInput)
     email = forms.EmailField(label="email:", required=True)
     content = forms.CharField(label="Contenido:", widget=forms.Textarea)
+   
+    print(name)
+    
+    
+   
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
