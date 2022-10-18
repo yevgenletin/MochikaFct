@@ -10,7 +10,6 @@ from django.template.loader import render_to_string
 def contacto(request):
    
     formulario_contacto = Formulario()
-    submitted = True
 
     if request.method == "POST":
 
@@ -21,7 +20,7 @@ def contacto(request):
             content = request.POST.get("content")
 
             email = EmailMessage(
-                "Mensaje desde app de django",
+                "Mensaje desde Web Mochika",
                 "El usuario con nombre {} con la direccion {} escribe: \n\n {}".format(name, email, content),
                 "",
                 ["yevgen.letin@gmail.com"],
@@ -34,4 +33,4 @@ def contacto(request):
                 return redirect("/Contacto/?novalido")
 
     return render(request, "Contacto/contacto.html", {'miFormulario': formulario_contacto})
-    #return render(request, "Contacto/contacto.html", context)
+    
