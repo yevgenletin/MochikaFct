@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from email.policy import default
 from pathlib import Path
 from decouple import config
-import os
 import environ
 environ.Env.read_env()
 env = environ.Env()

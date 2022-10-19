@@ -1,0 +1,91 @@
+<style>
+  .verde {
+    width: 10px; 
+     height: 10px; 
+     background: #14e09ce3;
+     border: 5px solid #fff;
+}
+.rojo {
+    width: 10px; 
+     height: 10px; 
+     background: #e01414e3;
+     border: 5px solid #fff;
+}
+.amarillo {
+    width: 10px; 
+     height: 10px; 
+     background: #d6e411e3;
+     border: 5px solid #fff;
+}
+</style>
+{% extends "Home/base.html" %}
+{% block title %} Listado de productos {% endblock %}
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-xs-12 section-container-spacer">
+    
+    <h1>Listado Productos</h1>
+    <input id="search" class="form-control mb-3" placeholder="alimento">
+    
+  </div>
+
+
+<table class="table">
+     <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Fructosa</th>
+      <th scope="col">Lactosa</th>
+      <th scope="col">Sorbitol</th>
+      <th scope="col">Manitol</th>
+      <th scope="col">GOS</th>
+      <th scope="col">Fructano</th>
+      <th scope="col">gr</th>
+    </tr>
+  </thead>
+
+
+
+  <tbody id="box">
+
+  </tbody>
+</table>
+<script>
+  const data = '{{qs_json}}'
+  //console.log(data)
+
+  const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
+  //console.log(rdata)
+
+  const input = document.getElementById("search")
+  //console.log(input)
+
+  let filteredArr = []
+
+  input.addEventListener('keyup', (e)=>{
+    box.innerHTML = "";
+    filteredArr = rdata.filter(info => info['name'].includes(e.target.value))
+    console.log(filteredArr)
+
+    if(filteredArr.length> 0 ){
+      filteredArr.map(info=>{
+        box.innerHTML += ` 
+        <tr>
+          <td><a href="${info['id']}">${info['name']}</a></td>
+          console.log(${info['fructosa']})
+          <td class="${info['fructosa']}" >${info['fructosa']}</td>
+          <td class="${info['lactosa']}"></td>
+          <td class="${info['manitol']}"></td>
+          <td class="${info['sorbitol']}"></td>
+          <td class="${info['gos']}"></td>
+          <td class="${info['fructano']}"></td>
+          <td>${info['gr']}</td>
+        </tr>`
+      })
+    }else{
+      box.innerHTML += `<br>No hay resultados</b></br>`
+    }
+  })
+</script>
+{% endblock %}

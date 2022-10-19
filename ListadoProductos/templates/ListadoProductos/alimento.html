@@ -1,0 +1,92 @@
+<style>
+    .verde {
+      width: 10px; 
+       height: 10px; 
+       background: #14e09ce3;
+       border: 5px solid #fff;
+  }
+  .rojo {
+      width: 10px; 
+       height: 10px; 
+       background: #e01414e3;
+       border: 5px solid #fff;
+  }
+  .amarillo {
+      width: 10px; 
+       height: 10px; 
+       background: #d6e411e3;
+       border: 5px solid #fff;
+  }
+  </style>
+  {% extends "Home/base.html" %}
+  {% block title %} Inicio {% endblock %}
+  {% load static %}
+  {% block content %}
+  <div class="row">
+    <div class="col-xs-12 section-container-spacer">
+      <h1>Producto</h1> 
+    </div>
+  
+  
+  <table class="table">
+       <thead>
+      <tr>
+        <th scope="col">{{ servicio.name }}</th>
+        <th scope="col">Fructosa</th>
+        <th scope="col">Lactosa</th>
+        <th scope="col">Sorbitol</th>
+        <th scope="col">Manitol</th>
+        <th scope="col">GOS</th>
+        <th scope="col">Fructano</th>
+        <th scope="col">gr</th>
+      </tr>
+    </thead>
+  
+  
+  
+    <tbody id="box">
+        <tr>
+            <td>{{alimento.comment}}</td>
+            <td class="{{ servicio.fructosa }}" ></td>
+            <td class="{{servicio.lactosa}}"></td>
+            <td class="{{servicio.manitol}}"></td>
+            <td class="{{servicio.sorbitol}}"></td>
+            <td class="{{servicio.gos}}"></td>
+            <td class="{{servicio.fructano}}"></td>
+            <td>{{servicio.gr}}</td>
+        </tr>
+        {% if alimento.grAmarillo != 'false' %}
+            {% if alimento.grAmarillo != 'False' %}
+        <tr>
+            <td>{{alimento.commentAmarillo}}</td>
+            <td class="{{ servicio.fructosaAmarillo }}" ></td>
+            <td class="{{servicio.lactosaAmarillo}}"></td>
+            <td class="{{servicio.manitolAmarillo}}"></td>
+            <td class="{{servicio.sorbitolAmarillo}}"></td>
+            <td class="{{servicio.gosAmarillo}}"></td>
+            <td class="{{servicio.fructanoAmarillo}}"></td>
+            <td>{{alimento.grAmarillo}}</td>
+        </tr>
+            {% endif %}
+        {% endif %}
+        {% if servicio.grRojo != 'false' %}
+            {% if servicio.grRojo != 'False' %}
+        <tr>
+            <td>{{servicio.commentRojo}}</td>
+            <td class="{{ servicio.fructosaRojo }}" ></td>
+            <td class="{{servicio.lactosaRojo}}"></td>
+            <td class="{{servicio.manitolRojo}}"></td>
+            <td class="{{servicio.sorbitolRojo}}"></td>
+            <td class="{{servicio.gosRojo}}"></td>
+            <td class="{{servicio.fructanoRojo}}"></td>
+            <td>{{servicio.grRojo}}</td>
+        </tr>
+            {% endif %}
+        {% endif %}
+    </tbody>
+  </table>
+  
+          
+        
+  {% endblock %}
+  
