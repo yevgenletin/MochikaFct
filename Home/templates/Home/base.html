@@ -33,7 +33,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a href="./index.html" class="navbar-brand">Mochika Foodmap</a>
+    <a href="./index.html" class="navbar-brand">Mochika Fodmap</a>
   </div>
 
   <nav class="sidebar">
@@ -49,6 +49,7 @@
 
       <ul class="nav">
         
+        <li><a href="{% url 'home' %}" title="" class="{% if request.path == '' %} active {% endif %}">Mochika</a></li>
        
         <li><a href="{% url 'contacto' %}" title="" class="{% if request.path == '/Contacto/events' %} active {% endif %}">Contacto</a></li>
         <li><a href="{% url 'lista' %}" title="" class="{% if request.path == '/ListadoProductos/' %} active {% endif %}">Productos</a></li>
