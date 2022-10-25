@@ -5,9 +5,9 @@ from multiselectfield import MultiSelectField
 
 class Listado(models.Model):
 
-    ELEMENT = (('item_key1', 'verde'),
-              ('item_key2', 'amarillo'),
-              ('item_key3', 'rojo'),)
+    ELEMENT = (('verde', 'verde',),
+              ('amarillo', 'amarillo'),
+              ('rojo', 'rojo'),)
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length= 50)
     fructosa =MultiSelectField(max_length= 50, choices = ELEMENT)
