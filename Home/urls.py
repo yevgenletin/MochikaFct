@@ -1,15 +1,10 @@
 
 from django.urls import path
-
-from Home import views, admin
-from django.contrib import admin
+from Home import views
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.home, name="home"),
-    path('recetas/', views.recetas, name="recetas"),
-    path('restaurantes/', views.restaurantes, name="restaurantes"),
 ]
 
 

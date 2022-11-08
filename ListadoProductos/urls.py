@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('', views.InfoListView.as_view(), name="lista"),
-    path('<int:alimento_id>/', views.alimento, name="alimento")
+    path('<int:alimento_id>', views.alimento, name="alimento")
 ]
 
 

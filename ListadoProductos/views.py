@@ -9,7 +9,7 @@ import logging
 
 class InfoListView(ListView):
     model = Listado
-    template_name = "ListadoProductos/lista.html"
+    template_name = "ListadoProductos/lista.html/"
 
     def get_context_data(self, **kwargs):
         def defaultconverter(o):
@@ -25,6 +25,6 @@ def alimento(request, alimento_id):
     logging.debug(alimento_id)
     listado = Listado.objects.get(id = alimento_id)
     
-    return render(request, "ListadoAlimentos/alimento.html", {'listado': listado})
+    return render(request, "ListadoProductos/alimento.html/", {'listado': listado})
 
 
