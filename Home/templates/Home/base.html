@@ -59,6 +59,8 @@
       </ul>
 
       <nav class="nav-footer">
+        <a href="{% url 'autentificacion' %}" title="" class="{% if request.path == '' %} active {% endif %}"><i class="fa fa-user"></i> Usuario</a>  
+
         <p class="nav-footer-social-buttons">
           <a class="fa-icon" href="https://www.instagram.com/" title="">
             <i class="fa fa-instagram"></i>
@@ -81,9 +83,7 @@
             {% endblock %}
   </main>
 </body>
-<script> 
-alert("La resolución de tu pantalla es: " + screen.width + " x " + screen.height) 
-</script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function (event) {
   navbarToggleSidebar();
