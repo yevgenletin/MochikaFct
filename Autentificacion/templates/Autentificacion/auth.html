@@ -1,10 +1,14 @@
 
 {% extends "Home/base.html" %}
-{% load crispy_forms_tags%}
+{% load crispy_forms_tags %}
 {% block title %} <U>Autentificacion</U> {% endblock %}
 {% load static %}
 
 
 {% block content %}
-
+<div class="col-md-6">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Registrarse</button>
+</div>
 {% endblock %}

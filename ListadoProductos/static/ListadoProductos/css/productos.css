@@ -1,0 +1,42 @@
+.opcion{
+    display: none;
+  }
+  .opcion2{
+    width: 50px;
+    margin-left: 10px; 
+     height: 10px;
+     margin: 30px; 
+    display: table-cell;
+
+  }
+  .verde {
+    width: 10px; 
+     height: 10px; 
+     background: #14e09ce3;
+     border: 5px solid #fff;
+}
+.rojo {
+    width: 10px; 
+     height: 10px; 
+     background: #e01414e3;
+     border: 5px solid #fff;
+}
+.amarillo {
+    width: 10px; 
+     height: 10px; 
+     background: #d6e411e3;
+     border: 5px solid #fff;
+}
+@media only screen and (min-width: 600px) {
+ .opcion{
+  display: table-cell;
+ }
+ .opcion2{
+  display: none;
+ }
+}
+@media only screen and (min-width: 768px) {
+  .opcion{
+    display: table-cell;
+  }
+}
