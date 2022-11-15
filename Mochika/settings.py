@@ -14,6 +14,7 @@ from email.policy import default
 from pathlib import Path
 from decouple import config
 import environ
+from django.contrib.messages import constants as msg_error
 environ.Env.read_env()
 env = environ.Env()
 
@@ -150,3 +151,12 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", default="")
 EMAIL_PORT= config("EMAIL_PORT", default="")
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
+
+
+MESSAGE_TAGS = {
+    msg_error.ERROR: 'danger',
+    msg_error.WARNING: 'warning',
+    msg_error.INFO: 'info',
+    msg_error.SUCCESS: 'success',
+    msg_error.DEBUG: 'debug',
+}

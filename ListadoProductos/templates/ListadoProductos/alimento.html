@@ -4,9 +4,10 @@
   {% block title %} Inicio {% endblock %}
   {% load static %}
   {% block content %}
+  
   <div class="row">
     <div class="col-xs-12 section-container-spacer">
-      <h1>{{ listado.name }} <img class="img-responsive fa-icon" alt="dew" src="{% static 'Home/img/estrella.png'%}"></h1> 
+      <h1>{{ listado.name }} <img id="estrella" class="img-responsive fa-icon" alt="dew" src="{% static 'Home/img/estrella.png'%}"></h1> 
     </div>
   
   
@@ -100,11 +101,22 @@
       <textarea class="form-control" rows="3" placeholder="Enter your message"></textarea>
     </div>
  </div>
-
- 
-  
-  
-  
-</div>    
+</div>
+<script>
+  let estrella =  document.getElementById("estrella");
+  let favorito = false;
+   estrella.onclick = function(event){
+     //event.attr("src", "{% static 'Home/img/estrella_relleno.png'%}")
+     if(!favorito){
+       estrella.setAttribute('src', "{% static 'Home/img/estrella_relleno.png' %}");
+       favorito = true;
+       prompt("hola")
+     }else{
+       estrella.setAttribute('src', "{% static 'Home/img/estrella.png' %}");
+       favorito = false;
+     }
+     
+ }
+ </script>   
   {% endblock %}
   
