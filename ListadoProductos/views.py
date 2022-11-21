@@ -1,11 +1,14 @@
 
 # Create your views here.
 from django.views.generic.list import ListView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 import datetime
 from ListadoProductos.models import Listado
+from Favoritos.models import Favoritos
 import logging
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 class InfoListView(ListView):
     model = Listado
@@ -22,9 +25,37 @@ class InfoListView(ListView):
         return context
 
 def alimento(request, alimento_id):
-    logging.debug(alimento_id)
-    listado = Listado.objects.get(id = alimento_id)
     
-    return render(request, "ListadoProductos/alimento.html/", {'listado': listado})
+    listado = Listado.objects.get(id = alimento_id)
+    ##if(request.user):
+    favoritos = Favoritos.objects.filter(id_user= request.user.id, id_producto = alimento_id).first()
+    if(favoritos):
+        print ("tiene")
+    else:
+        print("no tiene")
+    
 
+    ##for f in favoritos:
+        ##print(f.id_producto)
+        ##if(f.id_producto == alimento)
+    ##else:
+        ##favoritos = False
+    
+    print(favoritos)
+    
+    return render(request, "ListadoProductos/alimento.html/", {'listado': listado, 'favoritos': favoritos})
 
+#def delete(request, id):
+    
+    #try:
+        #member = Favoritos.objects.get(id_producto=id)
+        #member.delete()
+        #return redirect('alimento', id)
+        
+    #except Favoritos.DoesNotExist:
+        #comment = None
+        #return redirect('alimento', id)
+
+def addrecord(request, id, name):
+  member = Favoritos(id_producto=id, id_user=request.user.id, name = name)
+  member.save()

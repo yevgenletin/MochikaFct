@@ -1,0 +1,28 @@
+{% extends "Home/base.html" %}
+{% block title %} Inicio {% endblock %}
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-xs-12">
+    <h1>favoritos</h1>
+  </div>
+  <a href="{% url 'create-favoritos'%}"> add</a>
+  <table class="table">
+    <tr>
+      <th>Nombre</th>
+      <th></th>
+      <th>Valor</th>
+    </tr>
+    {% for item in favoritos %}
+      <tr>
+        <td><a href="/ListadoProductos/{{item.id_producto}}">{{item.name}}</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+    {% empty %}
+        <h3>No hay favoritos</h3>
+    {% endfor %}
+    
+  </table>
+</div>
+{% endblock %}

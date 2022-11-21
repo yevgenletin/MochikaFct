@@ -13,6 +13,7 @@
 	
 	<link rel="stylesheet" href="{% static 'Home/css/style.css' %}">
 	<link href="{% static 'Home/css/productos.css' %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	</head>
 	<style>
@@ -85,7 +86,10 @@
 					<ul>
 						<li><a href="{% url 'home' %}" class="{% if request.path == '' %} colorlib-active {% endif %}">Mochika</a></li>
 						<li><a href="{% url 'contacto' %}" class="{% if request.path == '/Contacto/events' %} colorlib-active {% endif %}">Contacto</a></li>
-						<li><a href="{% url 'lista' %}" class="{% if request.path == '/ListadoProductos/' %} colorlib-active {% endif %}">Productos</a></li>
+						<li><a href="{% url 'lista' %}" class="{% if request.path == '' %} colorlib-active {% endif %}">Productos</a></li>
+						{% if user.is_authenticated %}
+							<li><a href="{% url 'favoritos' %}" class="{% if request.path == '/Favoritos/' %} colorlib-active {% endif %}">Favoritos</a></li>
+						{% endif %}
 					</ul>
 				
 			
@@ -122,12 +126,14 @@
 				</div>
 			</section>
 		</div><!-- END COLORLIB-PAGE -->
+		</div>
+		</div>
 	
 	
 
-	<script src="{% static 'Home/js/jquery.min.js' %}"></script>
-  	<script src="{% static 'Home/js/popper.js' %}"></script>
-  	<script src="{% static 'Home/js/bootstrap.min.js' %}"></script>
+	<!--<script src="{% static 'Home/js/jquery.min.js' %}"></script>-->
+  	<!--<script src="{% static 'Home/js/popper.js' %}"></script>-->
+  	<!--<script src="{% static 'Home/js/bootstrap.min.js' %}"></script>-->
   	<script src="{% static 'Home/js/main.js' %}"></script>
 	<script>
 		

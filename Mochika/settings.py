@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'Contacto',
     'ListadoProductos',
     'crispy_forms',
-    'Autentificacion'
+    'Autentificacion',
+    'Favoritos',
 
 ]
 
