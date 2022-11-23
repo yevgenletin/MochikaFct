@@ -1,0 +1,27 @@
+
+{% extends "MochikaApp/base.html" %}
+{% block title %} Inicio {% endblock %}
+{% load static %}
+{% block content %}
+  
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+    <div class="section-container-spacer">
+        <h1>{{post.name}}</h1>
+        <img class="img-responsive" alt="" src="{{post.thumbnail.url}}">
+        <blockquote>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        </blockquote>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+
+          <h2>Ingredientes:</h2>
+
+          {{post.ingredientes}}
+    </div>
+  </div>
+</div>
+{% endblock %}

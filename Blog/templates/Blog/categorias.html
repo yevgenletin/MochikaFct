@@ -1,0 +1,21 @@
+
+{% extends "MochikaApp/base.html" %}
+{% block title %} Inicio {% endblock %}
+{% load static %}
+{% block content %}
+  <section>
+    <div class="col-xs-12 col-md-12 section-container-spacer">
+          <a href="{% url 'categoria' 1%}" class="btn btn-primary btn-lg">Recetas Permitidas</a>
+          <a href="{% url 'categoria' 2%}" class="btn btn-primary btn-lg">Recetas con cuidado</a>
+    </div>
+  </section>
+  {% for post in posts %}
+    <div class="col-xs-12 col-md-4 section-container-spacer">
+      <img class="img-responsive" alt="" src="{{post.thumbnail.url}}">
+      <h2>{{post.name}}</h2>
+      <p>{{post.contenido}}</p>
+      <a href="{% url 'receta' post.id %}" class="btn btn-primary" title=""> {{post.id}}</a>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}
