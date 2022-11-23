@@ -19,15 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Home/', include('Home.urls')),
     path('ListadoProductos/', include('ListadoProductos.urls')),
     path('Favoritos/', include('Favoritos.urls')),
-    ##path('Blog/', include('RecetasApp.urls')),
+    path('Blog/', include('Blog.urls')),
     path('Contacto/', include('Contacto.urls')),
     ##path('accounts/', include('allauth.urls')),
     path('Autentificacion/', include('Autentificacion.urls')),
 ]
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

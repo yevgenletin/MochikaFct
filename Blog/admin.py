@@ -11,7 +11,21 @@ class CategoriaAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('name', 'contenido', 'ingredientes')
+            'fields': (
+                'name',
+                'categorias',
+                'tiempo',
+                'calorias',
+                'proteinas',
+                'grasas',
+                'azucares',
+                'sal',
+                
+                'contenido', 
+                'ingredientes',
+                'autor', 
+                'thumbnail'
+                )
         }),
         
     )

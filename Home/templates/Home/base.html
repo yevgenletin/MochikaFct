@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- CSS only -->
 
+	<link rel="stylesheet" href="{% static 'Home/css/recetas.css' %}">
 	<link rel="stylesheet" href="{% static 'Home/css/style.css' %}">
 	<link href="{% static 'Home/css/productos.css' %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -92,17 +93,31 @@
 			<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 				<nav id="colorlib-main-menu" role="navigation">
 					 <!-- Menu -->
-					<ul>
-						<li><a href="{% url 'home' %}"
+					<ul  class="list-group">
+						<li >
+							<a href="{% url 'home' %}"
 								class="{% if request.path == '' %} colorlib-active {% endif %}">Mochika</a></li>
-						<li><a href="{% url 'contacto' %}"
+						<li>
+							<a href="{% url 'contacto' %}"
 								class="{% if request.path == '/Contacto/events' %} colorlib-active {% endif %}">Contacto</a>
 						</li>
-						<li><a href="{% url 'lista' %}"
-								class="{% if request.path == '' %} colorlib-active {% endif %}">Productos</a></li>
+						<li>
+							<a href="{% url 'lista' %}"
+								class="{% if request.path == '' %} colorlib-active {% endif %}">Productos</a>
+						</li>
+						<li>
+							<a href="{% url 'recetas' %}"
+							class="{% if request.path == '/Favoritos/' %} colorlib-active {% endif %}">Recetas</a>
+						</li>
 						{% if user.is_authenticated %}
-						<li><a href="{% url 'favoritos:favoritos' %}"
+						<li>
+							<a href="{% url 'favoritos:favoritos' %}"
 								class="{% if request.path == '/Favoritos/' %} colorlib-active {% endif %}">Favoritos</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="#"
+								class="disabled">Favoritos</a>
 						</li>
 						{% endif %}
 					</ul>

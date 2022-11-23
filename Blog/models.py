@@ -20,9 +20,16 @@ class Categoria(models.Model):
 class Post(models.Model):
         id = models.AutoField(primary_key=True)
         name = models.CharField(max_length=50)
+        tiempo = models.CharField(max_length=10)
+        calorias = models.IntegerField()
+        proteinas = models.IntegerField()
+        grasas = models.IntegerField()
+        azucares = models.IntegerField()
+        sal = models.IntegerField()
         contenido = models.TextField(max_length=4000)
         thumbnail = models.ImageField(upload_to='media/thumbnail/%Y/%m/%d/', null=True, blank=True)
         ingredientes = models.TextField(max_length=4000)
+        valor = models.IntegerField()
 
         @property
         def thumbnail_preview(self):

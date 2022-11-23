@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from RecetasApp import views, admin
+from Blog import views, admin
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static

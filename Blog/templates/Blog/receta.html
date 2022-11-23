@@ -1,9 +1,163 @@
 
-{% extends "MochikaApp/base.html" %}
+{% extends "Home/base.html" %}
 {% block title %} Inicio {% endblock %}
 {% load static %}
 {% block content %}
+<style>
   
+header{
+    width: 100%;
+    height: 600px;
+     background: #232526;  /* fallback for old browsers */
+     background: -webkit-linear-gradient(to right, hsla(210, 3%, 26%, 0.568), hsla(200, 4%, 14%, 0.525)), url({{post.thumbnail.url}});
+     /* Chrome 10-25, Safari 5.1-6 */
+     background: linear-gradient(to right, hsla(210, 3%, 26%, 0.584), hsla(200, 4%, 14%, 0.545)), url({{post.thumbnail.url}});
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+</style>
+<header>
+  <div class="texto-header">
+  <h1>{{post.name}}</h1>
+  </div>
+          <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+              <path d="M0.00,49.99 C229.91,158.39 311.51,-47.85 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(255, 255, 255);">
+               </path></svg>
+          </div>
+   </header>
+<main>
+  
+  <div class="container">
+    <div class="card">
+      <img src="{% static 'Home/img/recetas/tiempo.png'%}"/>
+      <h6>tiempo</h6>
+      <p>20 min</p>
+    </div>
+     <div class="card">
+      <img src="{% static 'Home/img/recetas/calorias.png'%}"/>
+      <h6>calorias</h6>
+      <p>70gr.
+      </p>
+    </div>
+    <div class="card">
+      <img src="{% static 'Home/img/recetas/proteina.png'%}"/>
+      <h6>proteinas</h6>
+      <p>50</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'Home/img/recetas/grasas.png'%}"/>
+      <h6>grasas</h6>
+      <p>50</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'Home/img/recetas/azucar.png'%}"/>
+      <h6>azucares</h6>
+      <p>50</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'Home/img/recetas/salero.png'%}"/>
+      <h6>sal</h6>
+      <p>36</p>
+    </div>
+  </div>
+  <div id="body_pdf">
+  <section class="contenedor">
+    <div class="contenedor-recetas" alt="">
+      <div class="contenido-ingredientes">
+      <div id="pdf"><h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}"/></div>
+     <ul>
+        <li><span class="negrita">200 gr</span>de quinoa</li>
+        <li><span class="negrita">1</span> cucharadita de sal</li>
+        <li><span class="negrita">30 gr</span> de aceite de oliva</li>
+        <li><span class="negrita">800 gr </span>de agua</li>
+        <li><span class="sub-ingredientes">Hierbas aromáticas:</span></li>
+        <li><span class="negrita">25 gr</span>de perejil (sólo las hojas) limpias y secas</li>
+        <li><span class="negrita">15 gr</span>de menta fresca (sólo las hojas) limpias y secas</li>
+        <li><span class="negrita">1</span> ramillete de cebollino fresco (limpio y seco)</li>
+        <li><span class="negrita">1</span> cucharadita de zumo de limón</li>
+      </ul>
+        <H4>Vinagreta:</H4>
+      <ul>
+        <li><span class="negrita">80-100 gr</span> de zumo de limón (al gusto)</li>
+        <li><span class="negrita">50 gr</span>de aceite de oliva</li>
+        <li><span class="negrita">½</span>pimiento rojo</li>
+        <li><span class="negrita">½</span> pimiento verde</li>
+        <li>parte verde de dos cebolletas (opcional)</li>
+        <li><span class="negrita">100 gr</span> de aceitunas negras sin hueso</li>
+        <li><span class="negrita">½</span> cucharadita de comino molido</li>
+        <li><span class="negrita">½</span> cucharadita de pimienta</li>
+        <li><span class="negrita">1 </span> cucharada de sal</li>
+        <li><span class="negrita">2</span> tomates maduros cortados en dados</li>
+        <li><span class="negrita">1</span> pepino cortado en dados</li>
+      </ul>
+      
+    </div>
+  </div>
+      <div class="contenido-preparacion">
+        <h2>Preparación</h2>
+          <p>Pon en el vaso la quinoa, la sal, el aceite y el agua. Programa 15 min/100º/giro izquierda/vel cuchara.
+            Cuela la quinoa a través de una malla fina, aclárala con agua fría y reserva.
+            Troceado de hierbas aromáticas:
+            Pica el perejil, la menta y el cebollino programando 4 seg/vel 7. Retira a un bol y rocía con el zumo de limón. Reserva.
+            Vinagreta:
+            Pon en el vaso el zumo de limón, el aceite, los pimientos (rojo y verde), la parte verde de la cebolleta, las aceitunas, el comino, la pimienta y la sal y trocea programando 5 seg/vel 4.
+            Mezcla la quinoa con las hierbas aromáticas reservadas, el tomate, el pepino y la vinagreta. Reserva en el frigorífico hasta el momento de servir.
+            ¡Qué la disfrutes!!!</p>
+      </div>
+  </section>
+  </div>
+</main>
+<div class="form-floating col-sm-10 col-md-8 col-lg-6">
+  <label for="floatingTextarea">Calificar</label>
+  <div id="calificacion">
+    <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
+    <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
+    <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
+    <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
+    <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
+  </div>
+  <textarea id="comentarios"class="form-control" placeholder="comente aqui" id="floatingTextarea"></textarea>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2" type="button">enviar</button>
+  </div>
+</div>
+<div class="frame">
+  <div class="frame-landing" style="--i:url(https://www.pequerecetas.com/wp-content/uploads/2017/07/crema-de-calabacin.jpg)">
+    <h6>crema de calabacin</h6>
+  </div>
+  <div class="frame-info">
+    <div class="head">
+      <p class="tittle"> crema de calabacin</p>
+      <div class="description">
+        <div class="item">
+          <i class="fa-regular fa-clock"></i>
+          <p>30 min</p>
+        </div>
+        <div class="item">
+          <i class="fa-regular fa-user"></i>
+          <p>4</p> 
+        </div>
+      </div>
+    </div>
+   <div class="content">
+      <p class="tittle">ingredientes:</p>
+      <ul class="list">
+        <li>2 Calabacín</li>
+         <li>1 Patata</li>
+         <li>500 ml Caldo de verduras</li>
+         <li>Sal y pimienta al gusto</li>
+         <li>Aceite de oliva virgen extra</li>
+         <li>30 ml Nata líquida</li>
+         <li>media cebolla / 1 Diente de ajo opcionalmente</li>
+      </ul>
+    </div>
+    <div class="action">
+      <a href="#" class="btn">ver receta</a>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-xs-12 col-md-8">
     <div class="section-container-spacer">
