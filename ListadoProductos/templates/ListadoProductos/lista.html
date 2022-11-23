@@ -1,5 +1,5 @@
 <style>
- 
+
 </style>
 {% extends "Home/base.html" %}
 {% block title %} Listado de productos {% endblock %}
@@ -7,75 +7,62 @@
 {% block content %}
 <div class="row">
   <div class="col-xs-12 section-container-spacer">
-    
     <h1>Listado Productos</h1>
+     <!-- Buscador de alimentos -->
     <input id="search" class="form-control mb-3" placeholder="alimento">
-    
   </div>
+   <!-- tabla de los productos -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col" class="opcion">Fructosa</th>
+        <th scope="col" class="opcion">Lactosa</th>
+        <th scope="col" class="opcion">Sorbitol</th>
+        <th scope="col" class="opcion">Manitol</th>
+        <th scope="col" class="opcion">GOS</th>
+        <th scope="col" class="opcion">Fructano</th>
+        <th scope="col" class="opcion2"></th>
+        <th scope="col" class="opcion">gr</th>
+      </tr>
+    </thead>
+    
+    <!-- Carga contenido de la tabla -->
+    <tbody id="box">
+    </tbody>
+  </table>
+  <script>
+    const data = '{{qs_json}}'
+    const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
+    const input = document.getElementById("search")
+    let filteredArr = []
 
+    input.addEventListener('keyup', (e) => {
+      box.innerHTML = "";
+      filteredArr = rdata.filter(info => info['name'].includes(e.target.value))
 
-<table class="table">
-     <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col" class="opcion">Fructosa</th>
-      <th scope="col" class="opcion">Lactosa</th>
-      <th scope="col" class="opcion">Sorbitol</th>
-      <th scope="col" class="opcion">Manitol</th>
-      <th scope="col" class="opcion">GOS</th>
-      <th scope="col" class="opcion">Fructano</th>
-      <th scope="col" class="opcion2"></th>
-      <th scope="col" class="opcion">gr</th>
-      
-      
-    </tr>
-  </thead>
+      if (filteredArr.length > 0) {
+        filteredArr.map(info => {
+          let color = "verde";
+          let fructosa = info['fructosa'];
+          let lactosa = info['lactosa'];
+          let manitol = info['manitol'];
+          let sorbitol = info['sorbitol'];
+          let gos = info['gos'];
+          let fructano = info['fructano'];
+          let arr = [fructosa, lactosa, manitol, sorbitol, gos, gos, fructano]
 
-
-
-  <tbody id="box">
-
-  </tbody>
-</table>
-<script>
-  const data = '{{qs_json}}'
-  //console.log(data)
-
-  const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
-  //console.log(rdata)
-
-  const input = document.getElementById("search")
-  //console.log(input)
-
-  let filteredArr = []
-
-  input.addEventListener('keyup', (e)=>{
-    box.innerHTML = "";
-    filteredArr = rdata.filter(info => info['name'].includes(e.target.value))
-    console.log(filteredArr)
-
-    if(filteredArr.length> 0 ){
-      filteredArr.map(info=>{
-        let color = "verde";
-        let fructosa = info['fructosa'];
-        let lactosa = info['lactosa'];
-        let manitol = info['manitol'];
-        let sorbitol = info['sorbitol'];
-        let gos = info['gos'];
-        let fructano = info['fructano'];
-        let arr = [fructosa, lactosa, manitol, sorbitol, gos, gos, fructano]
-        
-        
+          //Dibujar las celdas de colores
           arr.forEach(element => {
-          if(element[0] === 'amarillo' && color === 'verde'){
-            color =  "amarillo";
-          }
-          if(element[0] === 'rojo'){
-            color =  "rojo";
-          }
+            if (element[0] === 'amarillo' && color === 'verde') {
+              color = "amarillo";
+            }
+            if (element[0] === 'rojo') {
+              color = "rojo";
+            }
           });
-       //console.log(fructosa);
-        box.innerHTML += ` 
+          //Añadir los productos a la tabla
+          box.innerHTML += ` 
         <tr>
           <td id="name"><a href="${info['id']}">${info['name']}</a></td>
           <td class="${info['fructosa']} opcion" ></td>
@@ -87,10 +74,10 @@
           <td class="opcion">${info['gr']} </td>
           <td class="${color} opcion2"> </td>
         </tr>`
-      })
-    }else{
-      box.innerHTML += `<br>No hay resultados</b></br>`
-    }
-  })
-</script>
-{% endblock %}
+        })
+      } else {
+        box.innerHTML += `<br>No hay resultados</b></br>`
+      }
+    })
+  </script>
+  {% endblock %}

@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic.list import ListView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 from .models import Favoritos
@@ -41,14 +41,17 @@ class CreateFavoritos(View):
       valor = request.GET.get('valor', None)
       comment = request.GET.get('comment', None)
       favoritos = Favoritos.objects.filter(id_user= request.user.id, id_producto = id_producto)
-    
-      obj = Favoritos.objects.create(
+      if favoritos:
+          pass
+      else:
+        obj = Favoritos.objects.create(
             id_user = User.objects.get(id = request.user.id),
             id_producto = id_producto,
             name = name,
             valor = valor,
             comment = comment
         )
+      
       
       favoritos = {'id_producto':obj.id_producto,'name':obj.name,'comment':obj.comment}
     
@@ -78,4 +81,16 @@ class UpdateFavoritos(View):
       data = {
             'favoritos': favoritos
       }
+      return JsonResponse(data)
+class DeleteFavoritos(View):
+  def  get(self, request):
+    
+    if request.user.is_authenticated:
+      id1 = request.GET.get('id', None)
+      event = Favoritos.objects.get(id_user= request.user.id, id_producto=id1)
+      event.delete()
+
+      data = {
+            'deleted': True
+        }
       return JsonResponse(data)

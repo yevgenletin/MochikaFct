@@ -8,8 +8,8 @@ import re
   
 regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
-
-# Create your views here.
+# Recibe los datos del formulario contaco
+# Comprueba los datos si son validos y envia el email
 
 def contacto(request):
     formulario_contacto = Formulario()

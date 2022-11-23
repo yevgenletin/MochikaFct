@@ -20,12 +20,11 @@
     </div>
     <!-- Cabecera-->
     <div class="col-xs-12 section-container-spacer">
-      <h1>{{ listado.name }}
+      <h1>{{ listado.name }}{{favoritos.comment}}
         {% if user.is_authenticated %}
-        
           {% if favoritos %}
           <div id="check"></div>
-              <a href="{% url 'favoritos' %}"><img id="estrella" class="img-responsive fa-icon" alt="dew" src="{% static 'Home/img/cheque.png'%}"></a></h1>
+              <a href="{% url 'favoritos:favoritos' %}"><img id="estrella" class="img-responsive fa-icon" alt="dew" src="{% static 'Home/img/cheque.png'%}"></a></h1>
           </div>
           {% endif %}
         {% endif %}
@@ -148,7 +147,7 @@
 </div>
    <!-- Imagen con los avisos -->
   <div class="row g-0 bg-light position-relative my-4">
-      <img class="rounded col-md-10 col-lg-6 d-md-block" alt="dew" src="{% static 'Home/img/arroz-blanco.webp'%}">
+      <img class="rounded col-md-10 col-lg-6 d-md-block" alt="dew" src="media/thumbnail/2022/11/22/icons8-jajaja_X9RYONc.gif">
     
     <div class="col-xs-12 col-md-10 col-lg-6 p-md-4">
       <h5 class="mt-0">No permitido</h5>

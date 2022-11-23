@@ -6,7 +6,7 @@
 
 
 {% block content %}
-
+ <!-- Leer los mensajes generados -->
 {% if messages %}
           {% for msg in messages %}
         <div class="alert alert-danger" role="alert">
@@ -15,7 +15,7 @@
           {% endfor %}
 {% endif %}
 <div class="col-md-6">
-
+ <!--Tabla -->
     <form method="post" action="" >
         {% csrf_token %}
         {{frm|crispy}}

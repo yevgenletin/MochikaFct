@@ -1,143 +1,150 @@
-
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-  	<title>Website menu 09</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+	<title>Website menu 09</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+	<!-- CSS only -->
+
 	<link rel="stylesheet" href="{% static 'Home/css/style.css' %}">
 	<link href="{% static 'Home/css/productos.css' %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
 
-	</head>
-	<style>
-#estrella{
-  width: 40px;
-  height: 40px;
-}
-.container {
-  position: relative;
-}
-.fl{
-	display: flex;
-}
-.fl i{
-	padding: 5px;
-}
-.logo{
-	width: 300px;	
-}
-.nav-footer{
-	width: 20px;
-}
-.imagen{
-	margin-top: 20px;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
-}
+</head>
+<style>
+	#estrella {
+		width: 40px;
+		height: 40px;
+	}
 
-.container:hover .overlay {
-  opacity: 0.7;
-}
+	.container {
+		position: relative;
+	}
 
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-#blanco{
-	margin: 0 auto;
-	height: 50px;
-	background-color: white;
-}
-	</style>
-	<body>
+	.fl {
+		display: flex;
+	}
+
+	.fl i {
+		padding: 5px;
+	}
+
+	.logo {
+		width: 300px;
+	}
+
+	.nav-footer {
+		width: 20px;
+	}
+
+	.imagen {
+		margin-top: 20px;
+	}
+
+	.overlay {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+		transition: .5s ease;
+		background-color: #008CBA;
+	}
+
+	.container:hover .overlay {
+		opacity: 0.7;
+	}
+
+	.text {
+		color: white;
+		font-size: 20px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+
+	#blanco {
+		margin: 0 auto;
+		height: 50px;
+		background-color: white;
+	}
+</style>
+ <!-- PLANTILLA DE LA WEB -->
+<body>
 	<div id="colorlib-page">
-			
-			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		
-		
-		  <div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<div id="colorlib-page">
 			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 			<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 				<nav id="colorlib-main-menu" role="navigation">
+					 <!-- Menu -->
 					<ul>
-						<li><a href="{% url 'home' %}" class="{% if request.path == '' %} colorlib-active {% endif %}">Mochika</a></li>
-						<li><a href="{% url 'contacto' %}" class="{% if request.path == '/Contacto/events' %} colorlib-active {% endif %}">Contacto</a></li>
-						<li><a href="{% url 'lista' %}" class="{% if request.path == '' %} colorlib-active {% endif %}">Productos</a></li>
+						<li><a href="{% url 'home' %}"
+								class="{% if request.path == '' %} colorlib-active {% endif %}">Mochika</a></li>
+						<li><a href="{% url 'contacto' %}"
+								class="{% if request.path == '/Contacto/events' %} colorlib-active {% endif %}">Contacto</a>
+						</li>
+						<li><a href="{% url 'lista' %}"
+								class="{% if request.path == '' %} colorlib-active {% endif %}">Productos</a></li>
 						{% if user.is_authenticated %}
-							<li><a href="{% url 'favoritos' %}" class="{% if request.path == '/Favoritos/' %} colorlib-active {% endif %}">Favoritos</a></li>
+						<li><a href="{% url 'favoritos:favoritos' %}"
+								class="{% if request.path == '/Favoritos/' %} colorlib-active {% endif %}">Favoritos</a>
+						</li>
 						{% endif %}
 					</ul>
-				
-			
-				{%if user.is_authenticated%}
-				  <p>{{user.username}}</p>
-				  <a href="{% url 'cerrar_sesion' %}" title="" ><i class="fa fa-user"></i> Cerrar sesion</a>  
-				{% else %}
-				  <a href="{% url 'autentificacion' %}" title=""><i class="fa fa-user"> Registrarse</i></a>
-				  <br>
-				  <a href="{% url 'login' %}" title=""><i class="fa fa-sign-in"></i> Login</a>
-				{% endif %}
-				
-				<!--Redes sociales-->
-				<p class="fl">
-				  <a class="fa-icon" href="https://www.instagram.com/" title="instagram">
-					<i class="fa fa-instagram"></i>
-				  </a>
-				  
-				  <a class="fa-icon" href="https://twitter.com/" title="instagram">
-					<i class="fa fa-twitter"></i>
-				  </a>
-				  <a class="fa-icon" href="https://twitter.com/" title="instagram">
-					<i class="fa fa-twitter"></i>
-				  </a>
-				</p>	
-			  </nav>
-			</aside> <!-- END COLORLIB-ASIDE -->
-		<!--<div id="blanco" class="col-xs-12"></div>-->
-		<div id="colorlib-main">
-			<section class="ftco-section pt-4 mb-5 ftco-intro">
-				<div class="container-fluid px-3 px-md-0">
-					{% block content %}
-					{% endblock %}
-				</div>
-			</section>
-		</div><!-- END COLORLIB-PAGE -->
-		</div>
-		</div>
-	
-	
+					 <!-- Uuarios -->
+					{%if user.is_authenticated%}
+						<p>{{user.username}}</p>
+						<a href="{% url 'cerrar_sesion' %}" title=""><i class="fa fa-user"></i> Cerrar sesion</a>
+					{% else %}
+						<a href="{% url 'autentificacion' %}" title=""><i class="fa fa-user"> Registrarse</i></a>
+						<br>
+						<a href="{% url 'login' %}" title=""><i class="fa fa-sign-in"></i> Login</a>
+					{% endif %}
+					<!--Redes sociales-->
+					<p class="fl">
+						<a class="fa-icon" href="https://www.instagram.com/" title="instagram">
+							<i class="fa fa-instagram"></i>
+						</a>
+						<a class="fa-icon" href="https://twitter.com/" title="instagram">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a class="fa-icon" href="https://twitter.com/" title="instagram">
+							<i class="fa fa-twitter"></i>
+						</a>
+					</p>
+				</nav>
+			</aside> <!-- FIN COLORLIB-ASIDE -->
 
+			<div id="colorlib-main">
+				<section class="ftco-section pt-4 mb-5 ftco-intro">
+					<div class="container-fluid px-3 px-md-0">
+						{% block content %}
+						 <!-- CONTENIDO DE LAS PAGINAS -->
+						{% endblock %}
+					</div>
+				</section>
+			</div><!-- FIN COLORLIB-PAGE -->
+		</div>
+	</div>
 	<!--<script src="{% static 'Home/js/jquery.min.js' %}"></script>-->
-  	<!--<script src="{% static 'Home/js/popper.js' %}"></script>-->
-  	<!--<script src="{% static 'Home/js/bootstrap.min.js' %}"></script>-->
-  	<script src="{% static 'Home/js/main.js' %}"></script>
-	<script>
-		
-	</script>
-	</body>
-</html>
+	<!--<script src="{% static 'Home/js/popper.js' %}"></script>-->
+	<!--<script src="{% static 'Home/js/bootstrap.min.js' %}"></script>-->
+	<script src="{% static 'Home/js/main.js' %}"></script>
+</body>
 
+</html>
