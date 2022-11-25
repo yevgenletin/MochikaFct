@@ -16,10 +16,14 @@
 	<link rel="stylesheet" href="{% static 'Home/css/style.css' %}">
 	<link href="{% static 'Home/css/productos.css' %}" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	
-
+	<title><img src="{% static 'Home/img/logo_mochika.svg'%}" alt="">Mochika</title>
+	<link rel="shortcut icon" href="{% static 'Home/img/logo_mochika.svg'%}">
 </head>
 <style>
+	#logo{
+		width: 50%;
+		height: auto;
+	}
 	#estrella {
 		width: 40px;
 		height: 40px;
@@ -83,14 +87,21 @@
 		height: 50px;
 		background-color: white;
 	}
+	
+	#map {
+  		height: 100%;
+	}
+	
 </style>
  <!-- PLANTILLA DE LA WEB -->
 <body>
 	<div id="colorlib-page">
-		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-		<div id="colorlib-page">
-			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+	<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		
+			
 			<aside id="colorlib-aside" role="complementary" class="js-fullheight">
+				
+				<img id="logo" src="{% static 'Home/img/logo_mochika.svg'%}" alt="">
 				<nav id="colorlib-main-menu" role="navigation">
 					 <!-- Menu -->
 					<ul  class="list-group">
@@ -116,8 +127,7 @@
 						</li>
 						{% else %}
 						<li>
-							<a href="#"
-								class="disabled">Favoritos</a>
+							<a href="#" id="off" style="color:#999; pointer-events:none; opacity:0.6;">Favoritos</a>
 						</li>
 						{% endif %}
 					</ul>
@@ -160,6 +170,7 @@
 	<!--<script src="{% static 'Home/js/popper.js' %}"></script>-->
 	<!--<script src="{% static 'Home/js/bootstrap.min.js' %}"></script>-->
 	<script src="{% static 'Home/js/main.js' %}"></script>
+
 </body>
 
 </html>

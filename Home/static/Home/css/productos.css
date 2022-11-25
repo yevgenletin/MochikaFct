@@ -5,24 +5,24 @@
   .opcion2{
     width: 50px;
     margin-left: 10px; 
-     height: 10px;
-     margin: 30px; 
+    height: 10px;
+    margin: 30px; 
     display: table-cell;
 
   }
-  .verde {
+  .verde-table {
     width: 10px; 
      height: 10px; 
      background: #14e09ce3;
      border: 5px solid #fff;
 }
-.rojo {
+.rojo-table {
     width: 10px; 
      height: 10px; 
      background: #e01414e3;
      border: 5px solid #fff;
 }
-.amarillo {
+.amarillo-table {
     width: 10px; 
      height: 10px; 
      background: #d6e411e3;

@@ -29,14 +29,12 @@ def alimento(request, alimento_id):
     listado = Listado.objects.get(id = alimento_id)
     ##if(request.user):
     favoritos = Favoritos.objects.filter(id_user= request.user.id, id_producto = alimento_id).first()
-    img = Listado.objects.get(id = alimento_id)
+    img = Listado.objects.filter(id = alimento_id)
     if(favoritos):
         print ("tiene")
-        print(img.thumbnail)
-        print(favoritos)
-
+        print(listado)
     else:
-        print("no tiene")
+        print("no tiiene")
     
 
     ##for f in favoritos:
@@ -45,7 +43,7 @@ def alimento(request, alimento_id):
     ##else:
         ##favoritos = False
     
-    
+    print(img)
     
     return render(request, "ListadoProductos/alimento.html/", {'listado': listado, 'favoritos': favoritos, 'img': img})
 

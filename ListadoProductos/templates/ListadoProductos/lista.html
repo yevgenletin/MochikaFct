@@ -5,7 +5,25 @@
 {% block title %} Listado de productos {% endblock %}
 {% load static %}
 {% block content %}
-<div class="row">
+
+  <style>
+    header{
+      background: -webkit-linear-gradient(to right, hsla(210, 3%, 26%, 0.568), hsla(200, 4%, 14%, 0.525)), url({{post.thumbnail.url}});
+     /* Chrome 10-25, Safari 5.1-6 */
+     background: linear-gradient(to right, hsla(210, 3%, 26%, 0.584), hsla(200, 4%, 14%, 0.545)), url({{post.thumbnail.url}});
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  </style>
+  <div class="row">
+    <header>
+      <div class="texto-header">
+      <h1>Alimentos</h1>
+      </div>
+              <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                  <path d="M0.00,49.99 C229.91,158.39 311.51,-47.85 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(255, 255, 255);">
+                   </path></svg>
+              </div>
+      </header>
   <div class="col-xs-12 section-container-spacer">
     <h1>Listado Productos</h1>
      <!-- Buscador de alimentos -->
@@ -65,14 +83,14 @@
           box.innerHTML += ` 
         <tr>
           <td id="name"><a href="${info['id']}">${info['name']}</a></td>
-          <td class="${info['fructosa']} opcion" ></td>
-          <td class="${info['lactosa']} opcion"></td>
-          <td class="${info['manitol']} opcion"></td>
-          <td class="${info['sorbitol']} opcion"></td>
-          <td class="${info['gos']} opcion"></td>
-          <td class="${info['fructano']} opcion"></td>
+          <td class="${info['fructosa']}-table opcion" ></td>
+          <td class="${info['lactosa']}-table opcion"></td>
+          <td class="${info['manitol']}-table opcion"></td>
+          <td class="${info['sorbitol']}-table opcion"></td>
+          <td class="${info['gos']}-table opcion"></td>
+          <td class="${info['fructano']}-table opcion"></td>
           <td class="opcion">${info['gr']} </td>
-          <td class="${color} opcion2"> </td>
+          <td class="${color}-table opcion2"> </td>
         </tr>`
         })
       } else {

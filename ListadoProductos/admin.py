@@ -7,11 +7,43 @@ from .models import Listado
 class ListadoAdmin(admin.ModelAdmin):
     readonly_fields = ("updated", "created")
 
-    def thumbnail_preview(self, obj):
-        return obj.thumbnail_preview
+    fieldsets = (
+        (None, {
+            'fields': (
+                'name',
+                'fructosa',
+                'lactosa',
+                'sorbitol',
+                'manitol',
+                'gos',
+                'fructano',
+                'gr',
+                'comment',
+                'thumbnail',
+                
+                'fructosaAmarillo',
+                'lactosaAmarillo',
+                'sorbitolAmarillo',
+                'manitolAmarillo',
+                'gosAmarillo',
+                'fructanoAmarillo',
+                'grAmarillo',
+                'commentAmarillo',
 
-    thumbnail_preview.short_description = 'Thumbnail Preview'
-    thumbnail_preview.allow_tags = True
+                'fructosaRojo',
+                'lactosaRojo',
+                'sorbitolRojo',
+                'manitolRojo',
+                'gosRojo',
+                'fructanoRojo',
+                'grRojo',
+                'commentRojo',
 
+                )
+        }),
+        
+    )
+    readonly_fields = ("created", "updated")
+    
 
 admin.site.register(Listado, ListadoAdmin)

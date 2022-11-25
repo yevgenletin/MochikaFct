@@ -52,8 +52,12 @@ class Listado(models.Model):
     created = models.DateTimeField(auto_now_add= True)
     updated = models.DateTimeField(auto_now_add= True)
     class Meta:
-        verbose_name = 'producto'
-        verbose_name_plural = 'productos'
+        verbose_name = 'Alimento'
+        verbose_name_plural = 'Alimentos'
+
+        
+    def __str__(self):
+        return str(self.id) + " " + str(self.name)
 
 
 

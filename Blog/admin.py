@@ -20,10 +20,11 @@ class PostAdmin(admin.ModelAdmin):
                 'grasas',
                 'azucares',
                 'sal',
-                
+
                 'contenido', 
                 'ingredientes',
-                'autor', 
+                'autor',
+                "valor",
                 'thumbnail'
                 )
         }),

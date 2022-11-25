@@ -26,40 +26,39 @@ header{
               <path d="M0.00,49.99 C229.91,158.39 311.51,-47.85 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(255, 255, 255);">
                </path></svg>
           </div>
-   </header>
+  </header>
 <main>
   
-  <div class="container">
+  <div class="container-receta">
     <div class="card">
       <img src="{% static 'Home/img/recetas/tiempo.png'%}"/>
       <h6>tiempo</h6>
-      <p>20 min</p>
+      <p>{{post.tiempo}}</p>
     </div>
      <div class="card">
       <img src="{% static 'Home/img/recetas/calorias.png'%}"/>
       <h6>calorias</h6>
-      <p>70gr.
-      </p>
+      <p>{{post.calorias}}</p>
     </div>
     <div class="card">
       <img src="{% static 'Home/img/recetas/proteina.png'%}"/>
       <h6>proteinas</h6>
-      <p>50</p>
+      <p>{{post.proteinas}}</p>
     </div>
     <div class="card">
       <img src="{% static 'Home/img/recetas/grasas.png'%}"/>
       <h6>grasas</h6>
-      <p>50</p>
+      <p>{{post.grasas}}</p>
     </div>
     <div class="card">
       <img src="{% static 'Home/img/recetas/azucar.png'%}"/>
       <h6>azucares</h6>
-      <p>50</p>
+      <p>{{post.azucares}}</p>
     </div>
     <div class="card">
       <img src="{% static 'Home/img/recetas/salero.png'%}"/>
       <h6>sal</h6>
-      <p>36</p>
+      <p>{{post.sal}}</p>
     </div>
   </div>
   <div id="body_pdf">
@@ -67,44 +66,18 @@ header{
     <div class="contenedor-recetas" alt="">
       <div class="contenido-ingredientes">
       <div id="pdf"><h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}"/></div>
+
      <ul>
-        <li><span class="negrita">200 gr</span>de quinoa</li>
-        <li><span class="negrita">1</span> cucharadita de sal</li>
-        <li><span class="negrita">30 gr</span> de aceite de oliva</li>
-        <li><span class="negrita">800 gr </span>de agua</li>
-        <li><span class="sub-ingredientes">Hierbas aromáticas:</span></li>
-        <li><span class="negrita">25 gr</span>de perejil (sólo las hojas) limpias y secas</li>
-        <li><span class="negrita">15 gr</span>de menta fresca (sólo las hojas) limpias y secas</li>
-        <li><span class="negrita">1</span> ramillete de cebollino fresco (limpio y seco)</li>
-        <li><span class="negrita">1</span> cucharadita de zumo de limón</li>
+      {% for values, key in ingredientes.items %}
+        <li><span class="negrita">{{key}}</span>      {{values}}</li>
+      {% endfor %}
       </ul>
-        <H4>Vinagreta:</H4>
-      <ul>
-        <li><span class="negrita">80-100 gr</span> de zumo de limón (al gusto)</li>
-        <li><span class="negrita">50 gr</span>de aceite de oliva</li>
-        <li><span class="negrita">½</span>pimiento rojo</li>
-        <li><span class="negrita">½</span> pimiento verde</li>
-        <li>parte verde de dos cebolletas (opcional)</li>
-        <li><span class="negrita">100 gr</span> de aceitunas negras sin hueso</li>
-        <li><span class="negrita">½</span> cucharadita de comino molido</li>
-        <li><span class="negrita">½</span> cucharadita de pimienta</li>
-        <li><span class="negrita">1 </span> cucharada de sal</li>
-        <li><span class="negrita">2</span> tomates maduros cortados en dados</li>
-        <li><span class="negrita">1</span> pepino cortado en dados</li>
-      </ul>
-      
+
     </div>
   </div>
       <div class="contenido-preparacion">
         <h2>Preparación</h2>
-          <p>Pon en el vaso la quinoa, la sal, el aceite y el agua. Programa 15 min/100º/giro izquierda/vel cuchara.
-            Cuela la quinoa a través de una malla fina, aclárala con agua fría y reserva.
-            Troceado de hierbas aromáticas:
-            Pica el perejil, la menta y el cebollino programando 4 seg/vel 7. Retira a un bol y rocía con el zumo de limón. Reserva.
-            Vinagreta:
-            Pon en el vaso el zumo de limón, el aceite, los pimientos (rojo y verde), la parte verde de la cebolleta, las aceitunas, el comino, la pimienta y la sal y trocea programando 5 seg/vel 4.
-            Mezcla la quinoa con las hierbas aromáticas reservadas, el tomate, el pepino y la vinagreta. Reserva en el frigorífico hasta el momento de servir.
-            ¡Qué la disfrutes!!!</p>
+          <p>{{post.contenido}}</p>
       </div>
   </section>
   </div>
