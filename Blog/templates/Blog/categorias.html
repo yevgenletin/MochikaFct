@@ -10,9 +10,27 @@
 </style>
   <section>
     <div class="col-xs-12 col-md-12 section-container-spacer">
-          <a href="{% url 'categoria' 1%}" class="btn-category mx-3"></a>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown show">
+          
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#"></a>
+            {% for categoria in categorias %}
+              <a class="dropdown-item" href="{% url 'categoria' categoria.id %}">{{categoria.name}}</a>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+          <!--<a href="{% url 'categoria' 1%}" class="btn-category mx-3"></a>
           <a href="{% url 'categoria' 2%}" class="btn-category mx-3"></a>
-          <a href="{% url 'categoria' 3%}" class="btn btn-primary btn-lg">Categoria 3</a>
+          <a href="{% url 'categoria' 3%}" class="btn btn-primary btn-lg">Categoria 3</a>-->
     </div>
   </section>
   <div class="row">
@@ -29,4 +47,12 @@
  
   {% endfor %}
 </div>
+<script>
+  $(document).ready(function(){
+  $('.dropdown-toggle').click(function(){
+    console.log("sfalkñjfkasjfña")
+  })
+  });
+
+</script>
 {% endblock %}

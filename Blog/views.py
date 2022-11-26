@@ -14,14 +14,17 @@ import json
 
 def recetas(request):
     posts = Post.objects.all()
-    return render(request, "Blog/categorias.html", {"posts": posts})
+    categorias = Categoria.objects.all()
+   
+    return render(request, "Blog/categorias.html", {"posts": posts, "categorias": categorias})
 
 
 def categoria(request, categoria_id): 
     logging.debug(categoria_id)
+    categorias = Categoria.objects.all()
     categoria = Categoria.objects.get(id=categoria_id)
     posts = Post.objects.filter(categorias=categoria)
-    return render(request, "Blog/categorias.html", {'categoria': categoria, 'posts': posts})
+    return render(request, "Blog/categorias.html", {'categoria': categoria, 'posts': posts, 'categorias': categorias})
 
 def receta(request, post_id):
     '''Estructura json ingredientes
