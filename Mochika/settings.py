@@ -50,7 +50,9 @@ INSTALLED_APPS = [
     'ListadoProductos',
     'crispy_forms',
     'Autentificacion',
+    
     'Favoritos',
+    'django_extensions',
     
 
 ]

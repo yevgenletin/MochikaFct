@@ -27,6 +27,7 @@ class Vregistro(View):
                     print(msg)
                     messages.error(request, form.error_messages[msg])
                     return render(request, "Autentificacion/auth.html", {"form": form})
+
 def cerrar_sesion(request):
     logout(request)
     return redirect("/Home/")
