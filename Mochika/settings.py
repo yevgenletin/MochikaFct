@@ -14,9 +14,11 @@ from email.policy import default
 from pathlib import Path
 from decouple import config
 import environ
+import os
 from django.contrib.messages import constants as msg_error
 environ.Env.read_env()
 env = environ.Env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,7 +33,7 @@ SECRET_KEY = config("SECRET_KEY", default="")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -50,7 +52,6 @@ INSTALLED_APPS = [
     'ListadoProductos',
     'crispy_forms',
     'Autentificacion',
-    
     'Favoritos',
     'django_extensions',
     
@@ -68,6 +69,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Mochika.urls'
+
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
 
 TEMPLATES = [
     {

@@ -14,7 +14,7 @@ header{
      background: linear-gradient(to right, hsla(210, 3%, 26%, 0.584), hsla(200, 4%, 14%, 0.545)), url({{post.thumbnail.url}});
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
-    background-attachment: fixed;
+
     position: relative;
 }
 </style>
@@ -64,7 +64,11 @@ header{
   <div id="body_pdf">
   <section class="contenedor">
     <div class="contenedor-recetas" alt="">
-      <div class="contenido-ingredientes">
+      <div class="row g-0 bg-light col-12 position-relative my-4">
+    <img class="col-xs-10 col-md-6 p-4 m-2" src="{{post.thumbnail.url}}"/ >
+  
+  <div class="col-xs-11 col-md-5 p-3 m-2">
+    <div class="contenido-ingredientes">
       <div id="pdf"><h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}"/></div>
 
      <ul>
@@ -74,6 +78,13 @@ header{
       </ul>
 
     </div>
+  </div>
+  
+
+ 
+  
+</div>
+      
   </div>
       <div class="contenido-preparacion">
         <h2>Preparación</h2>
@@ -96,59 +107,6 @@ header{
     <button class="btn btn-primary me-md-2" type="button">enviar</button>
   </div>
 </div>
-<div class="frame">
-  <div class="frame-landing" style="--i:url(https://www.pequerecetas.com/wp-content/uploads/2017/07/crema-de-calabacin.jpg)">
-    <h6>crema de calabacin</h6>
-  </div>
-  <div class="frame-info">
-    <div class="head">
-      <p class="tittle"> crema de calabacin</p>
-      <div class="description">
-        <div class="item">
-          <i class="fa-regular fa-clock"></i>
-          <p>30 min</p>
-        </div>
-        <div class="item">
-          <i class="fa-regular fa-user"></i>
-          <p>4</p> 
-        </div>
-      </div>
-    </div>
-   <div class="content">
-      <p class="tittle">ingredientes:</p>
-      <ul class="list">
-        <li>2 Calabacín</li>
-         <li>1 Patata</li>
-         <li>500 ml Caldo de verduras</li>
-         <li>Sal y pimienta al gusto</li>
-         <li>Aceite de oliva virgen extra</li>
-         <li>30 ml Nata líquida</li>
-         <li>media cebolla / 1 Diente de ajo opcionalmente</li>
-      </ul>
-    </div>
-    <div class="action">
-      <a href="#" class="btn">ver receta</a>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12 col-md-8">
-    <div class="section-container-spacer">
-        <h1>{{post.name}}</h1>
-        <img class="img-responsive" alt="" src="{{post.thumbnail.url}}">
-        <blockquote>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        </blockquote>
+  
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.</p>
-
-          <h2>Ingredientes:</h2>
-
-          {{post.ingredientes}}
-    </div>
-  </div>
-</div>
 {% endblock %}

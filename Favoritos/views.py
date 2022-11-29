@@ -86,11 +86,16 @@ class DeleteFavoritos(View):
   def  get(self, request):
     
     if request.user.is_authenticated:
-      id1 = request.GET.get('id', None)
-      event = Favoritos.objects.get(id_user= request.user.id, id_producto=id1)
-      event.delete()
+      print("Eliminado")
+      try:
+        id1 = request.GET.get('id', None)
+        event = Favoritos.objects.get(id_user= request.user.id, id_producto=id1)
+        event.delete()
 
-      data = {
-            'deleted': True
-        }
-      return JsonResponse(data)
+        data = {
+              'deleted': True
+          }
+        return JsonResponse(data)
+      except:
+        print("No eliminado")
+        return JsonResponse()

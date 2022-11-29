@@ -6,9 +6,7 @@ import json
 import datetime
 from ListadoProductos.models import Listado
 from Favoritos.models import Favoritos
-import logging
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+
 
 class InfoListView(ListView):
     model = Listado
