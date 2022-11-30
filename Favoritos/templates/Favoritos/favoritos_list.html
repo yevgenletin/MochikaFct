@@ -51,14 +51,53 @@
       <th>Valor</th>
     </tr>
     
-    {% for item in favoritos %}
+    <div class="modal hide" id="addBookDialog">
+      <div class="modal-header">
+         <button class="close" data-dismiss="modal">×</button>
+         <h3>Modal header</h3>
+       </div>
+         <div class="modal-body">
+             <p>some content</p>
+             <input type="text" name="bookId" id="bookId" value=""/>
+         </div>
+     </div>
+     
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ><a href="/Favoritos/delete/{{recipient}}">Eliminar</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+   
 
+    {% for item in favoritos %}
       <tr>
-        
         <td id="{{item.id}}"><a href="/ListadoProductos/{{item.id_producto}}">{{item.name}}</a></td>
         <td></td>
         <td>
-          <a href='' id="{{item.id_producto}}" onclick="remove(this)" >
+          <a href="/Favoritos/delete/{{item.id_producto}}">
             <!--<a href='/Favoritos/delete-favoritos/{{item.id}}/' class="remove" id="{{item.id_producto}}">-->
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
               <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8
@@ -76,8 +115,14 @@
 </div>
 </div>
 <script>
- 
-    function remove(e){
+  /*$(document).on("click", ".open-AddBookDialog", function () {
+     var myBookId = $(this).data('id');
+     $(".modal-body #bookId").val( myBookId );
+});
+    function del(id){
+      console.log(id);
+    }*/
+   /* function remove(e){
       e.preventDefault();
   id = e.id;
     
@@ -98,6 +143,9 @@
          });
         }
 
-      
+      */
+</script>
+<script>
+  
 </script>
 {% endblock %}

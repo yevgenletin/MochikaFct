@@ -11,7 +11,7 @@ urlpatterns = [
     path('', views.favoritos, name="favoritos"),
     path('create-favoritos/', views.CreateFavoritos.as_view(), name="create-favoritos"),
     path('update-favoritos/', views.UpdateFavoritos.as_view(), name="update-favoritos"),
-    path('delete-favoritos/', views.DeleteFavoritos.as_view(), name="delete-favoritos"),
+    path('delete/<int:id>', views.DeleteFavoritos.as_view(), name="delete-favoritos"),
 
     
 ]
