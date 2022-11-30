@@ -98,11 +98,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         
-        'USER': config('DATABASE_USER', default=""),
-        'PASSWORD': config("DATABASE_PASSWORD", default=""),
-        'HOST': config("DATABASE_HOST", default=""),
-        'PORT': config("DATABASE_PORT", default=""),
-        'NAME': config('DATABASE_NAME', default=""),
+        'USER': config('DB_USER', default="root"),
+        'PASSWORD': config("DB_PASSWORD", default="eugenioletin"),
+        'HOST': config("DB_HOST", default="localhost"),
+        'PORT': config("PORT", default="3306"),
+        'NAME': config('DB_NAME', default="mochika"),
 
     }
 }
