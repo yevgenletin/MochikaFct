@@ -28,6 +28,9 @@
      background: #d6e411e3;
      border: 5px solid #fff;
 }
+.search__container{
+  padding-top: 0px;
+}
 @media only screen and (min-width: 600px) {
  .opcion{
   display: table-cell;
