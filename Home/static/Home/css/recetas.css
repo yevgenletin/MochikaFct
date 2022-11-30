@@ -16,6 +16,7 @@
 header{
     width: 100%;
     height: 430px;
+    font-size: 16px;
      background: #232526;  /* fallback for old browsers */
      background: -webkit-linear-gradient(to right, hsla(210, 3%, 26%, 0.568), hsla(200, 4%, 14%, 0.525)), url({{post.thumbnail.url}});
      /* Chrome 10-25, Safari 5.1-6 */
@@ -28,6 +29,7 @@ header{
 
 header .texto-header{
     display: flex;
+    font-size: 1em;
     height: 430px;
     width: 100%;
     align-items: center;
@@ -35,7 +37,7 @@ header .texto-header{
 
 }
 header .texto-header h1{
-    font-size: 100px;
+    font-size: 4em;
     color: #ffffff;
     font-family: 'Righteous', cursive;
     
@@ -51,6 +53,7 @@ header .texto-header h1{
 
 .container-receta{
     width:100%;
+    margin-bottom: 110px;
     max-width: 1200px;
     height: 170px;
     display: flex;
@@ -242,16 +245,18 @@ margin-left: 20%;
  }
 
 
- @media screen and (max-width: 900px){
+ @media screen and (min-width: 998px){
     header{
         background-position: center;
         height: 50%;
     }
     header .texto-header h1{
-        font-size: 50px;
         text-align: center;
     }
 
+    .container-receta{
+        margin-bottom: 0px;
+    }
     .container .card{
         height: 140px;
         width: 80px;
@@ -274,18 +279,18 @@ margin-left: 20%;
     .contenedor-recetas .contenido-ingredientes{
        align-items: center;
        width: 65%;
-       margin-top: 135px;
-      
  }
  }
- @media screen and (max-width:300px){
+ @media screen and (max-width:1300px){
     header .texto-header h1{
        text-align: center;
+
       }
+      
 
     .contenedor-recetas .contenido-ingredientes{
         width: 100%;
-        margin-top: 270px;
+        
     }
     .container .card{
         height: 140px;
