@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 from django.views.generic import View
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 '''
   Renderiza los datos de la tabla Favoritos
@@ -82,19 +83,22 @@ class UpdateFavoritos(View):
             'favoritos': favoritos
       }
       return JsonResponse(data)
+
+##Elimina items de la tabla  favoritos
 class DeleteFavoritos(View):
   def  get(self, request, id):
-    
+     
     if request.user.is_authenticated:
       print("Eliminado" + str(id))
       try:
-        print(id)
-        
+        favoritos = Favoritos.objects.filter(id_user= request.user.id, id_producto = id).last()
         event = Favoritos.objects.get(id_user= request.user.id, id_producto=id)
         event.delete()
-
-        
+        ## Envia mensaje si elimina el objeto
+        messages.success(request, 'eliminado   '+ str(favoritos.name) )
         return redirect('/Favoritos/')
       except:
-        print("No eliminado")
-        return JsonResponse()
+        ## manda mensaje de error si no puede eliminarse
+        messages.error(request, ' no se ha podido eliminar   '+ str(favoritos.name) )
+        return redirect('/Favoritos/')
+        

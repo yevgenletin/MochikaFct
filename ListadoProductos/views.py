@@ -25,7 +25,6 @@ class InfoListView(ListView):
 def alimento(request, alimento_id):
     
     listado = Listado.objects.get(id = alimento_id)
-    ##if(request.user):
     favoritos = Favoritos.objects.filter(id_user= request.user.id, id_producto = alimento_id).first()
     img = Listado.objects.filter(id = alimento_id)
     if(favoritos):
@@ -34,27 +33,8 @@ def alimento(request, alimento_id):
     else:
         print("no tiiene")
     
-
-    ##for f in favoritos:
-        ##print(f.id_producto)
-        ##if(f.id_producto == alimento)
-    ##else:
-        ##favoritos = False
-    
-    print(img)
-    
     return render(request, "ListadoProductos/alimento.html/", {'listado': listado, 'favoritos': favoritos, 'img': img})
 
-#def delete(request, id):
-    
-    #try:
-        #member = Favoritos.objects.get(id_producto=id)
-        #member.delete()
-        #return redirect('alimento', id)
-        
-    #except Favoritos.DoesNotExist:
-        #comment = None
-        #return redirect('alimento', id)
 
 def addrecord(request, id, name):
   member = Favoritos(id_producto=id, id_user=request.user.id, name = name)
