@@ -2,8 +2,194 @@
 {% block title %} Inicio {% endblock %}
 {% load static %}
 {% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;700&display=swap');
 
+:root{
+--color: #333; 
+}
+
+
+.container-parallax {
+  text-align: center;
+  font-family: 'Red Hat Text', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-position: center;
+  
+/*  this is where the magic happens:  */
+  background-attachment: fixed;
+}
+
+.item h1{
+  font-weight: 700;
+  color: rgb(19, 3, 3);
+  text-align: center;
+  text-align: center;
+  
+}
+
+
+
+.container-parallax a{
+  display: inline-block;
+  padding: 1em 3.5em;
+  background-color: var(--color);
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 0.3em;
+  font-weight: 700;
+  letter-spacing: .5px;
+  font-size: .875rem;
+}
+
+.container-parallax .blank,
+.other {
+  width: 100%;
+  min-height: 60vh;
+  background-color: var(--color);
+}
+
+.second {
+  background-image:url('/static/Home/img/2_back.jpg');
+  background-attachment: fixed;
+
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+.third {
+  background-image:url('/static/Home/img/5_plato.jpg');
+  background-attachment: fixed;
+
+}
+.container-parallax h1{
+  color: antiquewhite;
+  font-weight: 700;
+  font-size: 3rem;
+}
+.container-parallax h3{
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.container-parallax .card > a {
+  margin-bottom: 2em;
+}
+
+.item-parallax {
+  display: flex;
+  max-width: 320px;
+  background-color: white;;
+  flex-direction: column;
+  align-items: center;
+  border-radius: .5em;
+  -webkit-box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+  -moz-box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+  box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+}
+
+.container-parallax img {
+  width: 90%;
+  height: 200px;
+  background-color: lightgrey;
+  background-size: cover;
+  background-position: center;
+  margin-top: 20px;
+  border-radius: .3em;;
+}
+
+
+.item p{
+  
+  padding: 10px;
+}
+.item a{
+  padding: 40px;
+  text-align: right;
+}
+.container .card{
+  height: 120%;
+  padding: 1.25em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: justify;
+ 
+}
+
+.card-right {
+  float: right;
+}
+#galeria{
+
+  margin-bottom: 40px;
+}
+
+.blank h1{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width:650px){
+  .container .card{
+  width: 30rem;
+  height: 100%;
+  
+  padding: 1.25em;
+  margin: 70px;
+  text-align: justify;
+}
+.item h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    color: rgb(19, 3, 3);
+    text-align: center;
+}
+.item p{
+  font-size: 25px;
+  padding: 10px;
+}
+    }
+
+</style>
+<div class="container-parallax">
+  <h1>Mochika Food</h1>
+ 
+  <a href="#m">Leer mas</a>
+</div>
+
+<div class="blank"></div>
+
+<div class="container second">
+  
+  <div class="item">
+    <div class="img img-first"></div>
+    <div id="m" class="card card-right">
+      <h1>QUÉ ES LA DIETA FODMAP O DIETA BAJA EN FODMAP</h1>
+      <p>La dieta FODMAP consiste en eliminar ciertos alimentos que probablemente son mal tolerados por personas que sufren de Síndrome del Intestino Irritable. Estos
+      alimentos también puede tener relación con intolerancias alimentarias. Esta dieta ayuda a superar el dolor abdominal, los gases, la sensación de hinchazón…, que caracterizan a estas dolencias.</p>
+      <a href="#">Learn more</a>
+    </div>
+  </div>
+ 
+</div>
+
+<div class="blank">
+  <h1>Nuestras recetas</h1>
+</div>
  <!-- Imagenes de las recetas-->
+ <div id="galeria">
 <div class="row">
   <div class="col-md-6 col-lg-4">
     <div class="container">
@@ -58,37 +244,23 @@
       </div>
     </div>
   </div>
-
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-07-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-11-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-12-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-10-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
+</div>
+</div>
+<div class="container third">
+  <div class="item">
+    <div class="img img-third"></div>
+    <div class="card ">
+      <h1>¿Que causa la hinchazon?</h1>
+      <p>El gas entra normalmente en su tracto digestivo cuando traga aire y cuando las
+        bacterias en su intestino grueso descomponen ciertos alimentos sin digerir.</p>
+      <p>Puede que usted tenga más gas en su tracto digestivo si traga más
+        aire o come ciertos alimentos.</p>
+      <p>Todas las personas tragan una pequeña cantidad de aire al comer y beber. 
+        Usted traga más aire cuando:</p>
+      <p>Mastica goma de mascar, Toma bebidas carbonatadas o gaseosas, Come o bebe muy rápido, fuma, chupa caramelos duros, usa dentaduras postizas flojas,
+        el aire tragado, que no sale de su estómago al eructar, 
+        se mueve hacia su intestino y pasa a través de su ano.</p>
+      <a href="#">Learn more</a>
     </div>
   </div>
 </div>
