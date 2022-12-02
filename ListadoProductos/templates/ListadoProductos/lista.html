@@ -50,7 +50,7 @@
 
     input.addEventListener('keyup', (e) => {
       box.innerHTML = "";
-      filteredArr = rdata.filter(info => info['name'].includes(e.target.value))
+      filteredArr = rdata.filter(info => info['name'].includes((e.target.value).toLowerCase()))
 
       if (filteredArr.length > 0) {
         filteredArr.map(info => {
