@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.core.serializers import serialize
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 
 # Create your views here.
 
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Post, Categoria
+from .models import Post, Categoria, Comment
+from .form import MessageForm
 import logging
 import json
 
@@ -54,9 +57,10 @@ def receta(request, post_id):
     try:
         logging.debug(post_id)
         post = Post.objects.get(id=post_id)
+        comments = Comment.objects.all()
         jsn = json.loads(post.ingredientes)
         ingredientes = {}
-       
+        print(comments)
         for j in jsn:
             print(j['nombre'])
             for i in j['ingredientes']:
@@ -65,14 +69,16 @@ def receta(request, post_id):
                     ingredientes[key] = value
                     print(ingredientes)        
         
-        return render(request, "Blog/receta.html", {'post': post, 'ingredientes': ingredientes, 'jsn': jsn})
+        return render(request, "Blog/receta.html", {'post': post, 'ingredientes': ingredientes, 'jsn': jsn,  "form": MessageForm})
                 
     except:
         print ("Receta introducida con errores")
         return render(request, "Blog/receta.html", {'post': post})
 
-        
-    
+def comentario(request, post_id):
+  member = Comment(post_id = post_id, name = request.user.username, body = request.POST.get('body'))
+  member.save()
+  return redirect('/Blog/receta/'+ str(post_id)+'/')
     
 
 

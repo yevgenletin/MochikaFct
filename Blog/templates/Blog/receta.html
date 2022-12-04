@@ -1,5 +1,6 @@
 
 {% extends "Home/base.html" %}
+{% load crispy_forms_tags%}
 {% block title %} Inicio {% endblock %}
 {% load static %}
 {% block content %}
@@ -84,23 +85,74 @@
   </section>
   </div>
 </main>
-<div class="form-floating col-sm-10 col-md-8 col-lg-6">
+<!--<div class="form-floating col-sm-10 col-md-8 col-lg-6">
   <label for="floatingTextarea">Calificar</label>
   <div id="calificacion">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
-    <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
+    <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">-->
+    <h4>Comentarios</h4>
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Añadir comentario</button>
+    {% else %}
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" disabled>Añadir comentario</button>
+    {% endif %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Mensaje nuevo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <form id="msg" action = "/Blog/comentario/{{post.id}}/" method = "POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="body" class="col-form-label">Mensaje:</label>
+            <textarea class="form-control" id="body" name="body"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button id="enviar" type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+      </div>
+      <div class="modal-footer">
+        
+        
+      </div>
+    </div>
   </div>
-  <textarea id="comentarios"class="form-control" placeholder="comente aqui" id="floatingTextarea"></textarea>
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn btn-primary me-md-2" type="button">enviar</button>
+</div>
+    {% if not post.comments.all %}
+      No hay comentarios aun 
+    {% else %}
+
+    <br>
+      {% for comment in post.comments.all %}
+        <strong>{{comment.name}} - {{comment.date_added}}</strong>
+        <br>
+        {{comment.body}}
+        <br>
+      {%endfor%}
+      
+    {% endif %}
+    <hr>
   </div>
 </div>
   
 <script>
   $( document).ready(function() {
+    $('#enviar').click(function(){
+      $('#msg').submit();
+    })
+    
     console.log( "ready!" );
     $( "#descarga" ).click(function() {
  const $elementoParaConvertir = document.querySelector('body');

@@ -10,6 +10,7 @@ urlpatterns = [
     #path('', views.lista, name="lista"),
     path('', views.recetas, name="recetas"),
     path('receta/<int:post_id>/', views.receta, name="receta"),
+    path('comentario/<int:post_id>/', views.comentario, name="comentario"),
     path('categoria/<int:categoria_id>/', views.categoria, name="categoria"),
 ]
    
