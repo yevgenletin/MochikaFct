@@ -193,7 +193,7 @@
   {% for post in posts %}
   <div class="col-md-6 col-lg-4">
     <div class="container">
-      <img src="{{post.thumbnail.url}}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
+      <img src="{{post.thumbnail.url}}" alt="receta" class="imagen image img_fluid img-thumbnail" loading="lazy" />
       <div class="overlay">
         <a href="{% url 'receta' post.id %}" class="text">{{post.name}}</a>
       </div>

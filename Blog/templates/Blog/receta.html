@@ -35,32 +35,32 @@
 
   <div class="container-receta">
     <div class="card">
-      <img src="{% static 'Home/img/recetas/tiempo.png'%}" />
+      <img src="{% static 'Home/img/recetas/tiempo.png'%}" alt="tiempo" loading="lazy" />
       <h6>tiempo</h6>
       <p>{{post.tiempo}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/calorias.png'%}" />
+      <img src="{% static 'Home/img/recetas/calorias.png'%}" alt="calorias" loading="lazy" />
       <h6>calorias</h6>
       <p>{{post.calorias}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/proteina.png'%}" />
+      <img src="{% static 'Home/img/recetas/proteina.png'%}" alt="proteinas" loading="lazy" />
       <h6>proteinas</h6>
       <p>{{post.proteinas}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/grasas.png'%}" />
+      <img src="{% static 'Home/img/recetas/grasas.png'%}" alt="grasas" loading="lazy" />
       <h6>grasas</h6>
       <p>{{post.grasas}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/azucar.png'%}" />
+      <img src="{% static 'Home/img/recetas/azucar.png'%}" alt="azucares" loading="lazy" />
       <h6>azucares</h6>
       <p>{{post.azucares}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/salero.png'%}" />
+      <img src="{% static 'Home/img/recetas/salero.png'%}" alt="sal" loading="lazy" />
       <h6>sal</h6>
       <p>{{post.sal}}</p>
     </div>
@@ -74,7 +74,7 @@
           <div class="col-xs-11 col-md-5 p-3 m-2">
             <div class="contenido-ingredientes">
               <div id="pdf">
-                <h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}" />
+                <h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}" alt="pdf" loading="lazy" />
               </div>
               <ul>
                 {% for values, key in ingredientes.items %}
@@ -170,7 +170,7 @@ No hay comentarios aun
 </div>
 {% if total_comments > 5 %}
 <div id="btn">
-  <img src="{% static 'Home/img/flecha-abajo.png'%}" class="img-responsive"/>
+  <img src="{% static 'Home/img/flecha-abajo.png'%}" alt="mas comentarios" class="img-responsive" loading="lazy" />
 </div>
 {%endif%}
 </div>

@@ -31,7 +31,7 @@
           {% if user.is_authenticated %}
           {% if favoritos %}
           <div id="check">
-              <a href="{% url 'favoritos:favoritos' %}"><img id="estrella" class="img-responsive fa-icon" alt="dew" src="{% static 'Home/img/cheque.png'%}"></a></h1>
+              <a href="{% url 'favoritos:favoritos' %}"><img id="estrella" class="img-responsive fa-icon" alt="favorito" src="{% static 'Home/img/cheque.png'%}" loading="lazy"></a></h1>
           </div>
           {% endif %}
         {% endif %}
@@ -107,7 +107,7 @@
 
    <!-- Imagen con los avisos -->
   <div class="row g-0 bg-light position-relative my-4">
-      <img class="rounded col-md-10 col-lg-6 d-md-block" alt="dew" src="{{listado.thumbnail.url}}">
+      <img class="rounded col-md-10 col-lg-6 d-md-block" alt="Imagen alimento" src="{{listado.thumbnail.url}}" loading="lazy">
     
     <div class="col-xs-12 col-md-10 col-lg-6 p-md-4">
       <h5 class="mt-0">No permitido</h5>
@@ -129,29 +129,29 @@
       <!-- Seleccionar la cara -->
     {% if favoritos.valor == 1 %}
       <div class="col">
-        <a><img id="mareado" src="{% static 'Home/img/face/005-mareado-1.ico'%}" alt="icono-mareado"/></a>
-        <a><img id="aburrido" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido"/></a>
-        <a><img id="sonreir" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir"/></a>
+        <a><img id="mareado" src="{% static 'Home/img/face/005-mareado-1.ico'%}" alt="icono-mareado" loading="lazy"/></a>
+        <a><img id="aburrido" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+        <a><img id="sonreir" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
       </div>    
     {% endif %}
     {% if favoritos.valor == 2 %}
     <div class="col">
-      <a><img id="mareado"src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado"/></a>
-      <a><img id="aburrido"src="{% static 'Home/img/face/006-aburrido-6.png'%}" alt="icono-aburrido"/></a>
-      <a><img id="sonreir"src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir"/></a>
+      <a><img id="mareado"src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
+      <a><img id="aburrido"src="{% static 'Home/img/face/006-aburrido-6.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+      <a><img id="sonreir"src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
     </div>
     {% endif %}
     {% if favoritos.valor == 3 %}
     <div class="col">
-      <a><img id="mareado" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado"/></a>
-      <a><img id="aburrido" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido"/></a>
-      <a><img id="sonreir" src="{% static 'Home/img/face/004-sonrer-4.png'%}" alt="icono-sonreir"/></a>
+      <a><img id="mareado" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
+      <a><img id="aburrido" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+      <a><img id="sonreir" src="{% static 'Home/img/face/004-sonrer-4.png'%}" alt="icono-sonreir" loading="lazy"/></a>
     </div>
     {% endif %}
     {% if favoritos.valor != 1 and favoritos.valor != 2 and favoritos.valor !=  3%}
-      <a><img id="mareado" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado"/></a>
-      <a><img id="aburrido"src="{% static 'Home/img/face/001-aburrido.png'%}" alt=icono-aburrido"/></a>
-      <a><img id="sonreir" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir"/></a>
+      <a><img id="mareado" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
+      <a><img id="aburrido"src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+      <a><img id="sonreir" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
     {% endif %}
   </div>
 </div>
