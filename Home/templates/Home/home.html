@@ -186,62 +186,20 @@
 <div class="blank">
   <h1>Nuestras recetas</h1>
 </div>
+
  <!-- Imagenes de las recetas-->
  <div id="galeria">
 <div class="row">
+  {% for post in posts %}
   <div class="col-md-6 col-lg-4">
     <div class="container">
-      <img src="{% static 'Home/img/img-01-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
+      <img src="{{post.thumbnail.url}}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
       <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
+        <a href="{% url 'receta' post.id %}" class="text">{{post.name}}</a>
       </div>
     </div>
   </div>
-
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-02-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-03-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-04-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-04-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-lg-4">
-    <div class="container">
-      <img src="{% static 'Home/img/img-05-cuadrado.jpg'%}" alt="Avatar" class="imagen image img_fluid img-thumbnail">
-      <div class="overlay">
-        <a href="#" class="text">yogur con frutas</a>
-      </div>
-    </div>
-  </div>
+{% endfor%}
 </div>
 </div>
 <div class="container third">

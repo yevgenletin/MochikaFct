@@ -1,4 +1,3 @@
-
 {% extends "Home/base.html" %}
 {% load crispy_forms_tags%}
 {% block title %} Inicio {% endblock %}
@@ -6,83 +5,92 @@
 {% block content %}
 <!--style blog.css-->
 <style>
-  #descarga{
+  #descarga {
     cursor: pointer;
+  }
+  #btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+  }
+  #btn img{
+    width: 2em;
+
   }
 </style>
 <header id="header-receta">
   <div class="texto-header">
-  <h1>{{post.name}}</h1>
+    <h1>{{post.name}}</h1>
   </div>
-          <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
-              <path d="M0.00,49.99 C229.91,158.39 311.51,-47.85 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(248 249 250);">
-               </path></svg>
-          </div>
-  </header>
+  <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+      style="height: 100%; width: 100%;">
+      <path d="M0.00,49.99 C229.91,158.39 311.51,-47.85 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
+        style="stroke: none; fill: rgb(248 249 250);">
+      </path>
+    </svg>
+  </div>
+</header>
 <main>
-  
+
   <div class="container-receta">
     <div class="card">
-      <img src="{% static 'Home/img/recetas/tiempo.png'%}"/>
+      <img src="{% static 'Home/img/recetas/tiempo.png'%}" />
       <h6>tiempo</h6>
       <p>{{post.tiempo}}</p>
     </div>
-     <div class="card">
-      <img src="{% static 'Home/img/recetas/calorias.png'%}"/>
+    <div class="card">
+      <img src="{% static 'Home/img/recetas/calorias.png'%}" />
       <h6>calorias</h6>
       <p>{{post.calorias}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/proteina.png'%}"/>
+      <img src="{% static 'Home/img/recetas/proteina.png'%}" />
       <h6>proteinas</h6>
       <p>{{post.proteinas}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/grasas.png'%}"/>
+      <img src="{% static 'Home/img/recetas/grasas.png'%}" />
       <h6>grasas</h6>
       <p>{{post.grasas}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/azucar.png'%}"/>
+      <img src="{% static 'Home/img/recetas/azucar.png'%}" />
       <h6>azucares</h6>
       <p>{{post.azucares}}</p>
     </div>
     <div class="card">
-      <img src="{% static 'Home/img/recetas/salero.png'%}"/>
+      <img src="{% static 'Home/img/recetas/salero.png'%}" />
       <h6>sal</h6>
       <p>{{post.sal}}</p>
     </div>
   </div>
   <div id="body_pdf">
-  <section class="contenedor">
-    <div class="contenedor-recetas" alt="">
-      <div class="row g-0 bg-light col-12 position-relative my-4">
-    <img class="col-xs-10 col-md-6 p-4 m-2" src="{{post.thumbnail.url}}"/ >
-  
-  <div class="col-xs-11 col-md-5 p-3 m-2">
-    <div class="contenido-ingredientes">
-      <div id="pdf"><h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}"/></div>
+    <section class="contenedor">
+      <div class="contenedor-recetas" alt="">
+        <div class="row g-0 bg-light col-12 position-relative my-4">
+          <img class="col-xs-10 col-md-6 p-4 m-2" src="{{post.thumbnail.url}}" />
 
-     <ul>
-      {% for values, key in ingredientes.items %}
-        <li><span class="negrita">{{key}}</span>      {{values}}</li>
-      {% endfor %}
-      </ul>
+          <div class="col-xs-11 col-md-5 p-3 m-2">
+            <div class="contenido-ingredientes">
+              <div id="pdf">
+                <h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}" />
+              </div>
+              <ul>
+                {% for values, key in ingredientes.items %}
+                <li><span class="negrita">{{key}}</span> {{values}}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    </div>
-  </div>
-  
-
- 
-  
-</div>
-      
-  </div>
+      </div>
       <div class="contenido-preparacion">
         <h2>Preparación</h2>
-          <p>{{post.contenido}}</p>
+        <p>{{post.contenido}}</p>
       </div>
-  </section>
+    </section>
   </div>
 </main>
 <!--<div class="form-floating col-sm-10 col-md-8 col-lg-6">
@@ -93,13 +101,16 @@
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">-->
-    <h4>Comentarios</h4>
-    {% if user.is_authenticated %}
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Añadir comentario</button>
-    {% else %}
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" disabled>Añadir comentario</button>
-    {% endif %}
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<h4>Comentarios</h4>
+{% if user.is_authenticated %}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+  data-whatever="@getbootstrap">Añadir comentario</button>
+{% else %}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+  data-whatever="@getbootstrap" disabled>Añadir comentario</button>
+{% endif %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -109,8 +120,8 @@
         </button>
       </div>
       <div class="modal-body">
-        
-        <form id="msg" action = "/Blog/comentario/{{post.id}}/" method = "POST">
+
+        <form id="msg" action="/Blog/comentario/{{post.id}}/" method="POST">
           {% csrf_token %}
           <div class="form-group">
             <label for="body" class="col-form-label">Mensaje:</label>
@@ -122,68 +133,157 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button id="enviar" type="submit" class="btn btn-primary">Enviar</button>
       </div>
-      </div>
-      <div class="modal-footer">
-        
-        
-      </div>
+    </div>
+    <div class="modal-footer">
+
+
     </div>
   </div>
 </div>
-    {% if not post.comments.all %}
-      No hay comentarios aun 
-    {% else %}
-
-    <br>
-      {% for comment in post.comments.all %}
-        <strong>{{comment.name}} - {{comment.date_added}}</strong>
-        <br>
-        {{comment.body}}
-        <br>
-      {%endfor%}
-      
-    {% endif %}
-    <hr>
-  </div>
 </div>
-  
+{% if not post.comments.all %}
+No hay comentarios aun
+{% else %}
+<div class="com">
+  <br>
+  {% for comment in comments %}
+  <div class="container mt-2 comment">
+    <div class="d-flex justify-content-center row">
+      <div class="col-md-8">
+        <div class="d-flex flex-column comment-section">
+          <div class="bg-white p-2">
+            <div class="d-flex flex-row user-info">
+              <div class="d-flex flex-column justify-content-start ml-2"><span
+                  class="d-block font-weight-bold name">{{comment.name}}</span><span
+                  class="date text-black-50">{{comment.date_added}}</span></div>
+            </div>
+            <div class="mt-2">
+              <p class="comment-text">{{comment.body}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+  {% endif %}
+</div>
+{% if total_comments > 5 %}
+<div id="btn">
+  <img src="{% static 'Home/img/flecha-abajo.png'%}" class="img-responsive"/>
+</div>
+{%endif%}
+</div>
+</div>
+<!-------------------------------------------->
+
+
 <script>
-  $( document).ready(function() {
-    $('#enviar').click(function(){
-      $('#msg').submit();
-    })
+  $(document).ready(function () {
     
-    console.log( "ready!" );
-    $( "#descarga" ).click(function() {
- const $elementoParaConvertir = document.querySelector('body');
-// <-- Aquí puedes elegir cualquier elemento del DOM
-html2pdf()
-    .set({
-        margin: 1,
-        filename: 'documento.pdf',
-        image: {
+//Descargar la pagina en pdf
+    $("#descarga").click(function () {
+      const $elementoParaConvertir = document.querySelector('body');
+      // <-- Aquí puedes elegir cualquier elemento del DOM
+      html2pdf()
+        .set({
+          margin: 1,
+          filename: 'documento.pdf',
+          image: {
             type: 'jpeg',
             quality: 0.98
-        },
-        html2canvas: {
+          },
+          html2canvas: {
             scale: 3, // A mayor escala, mejores gráficos, pero más peso
             letterRendering: true,
-        },
-        jsPDF: {
+          },
+          jsPDF: {
             unit: "in",
             format: "a2",
             orientation: 'portrait' // landscape o portrait
-        }
-    })
-    .from($elementoParaConvertir)
-    .save()
-    .catch(err => console.log(err))
-    .finally()
-    .then(() => {
-        console.log ('guardado')
+          }
+        })
+        .from($elementoParaConvertir)
+        .save()
+        .catch(err => console.log(err))
+        .finally()
+        .then(() => {
+          console.log('guardado')
+        });
     });
-});
-  })
-    
+//Añadir comentario 
+    $('#enviar').click(function () {
+      $('#msg').submit();
+    })
+//Variables
+    let num = 5;
+    let currentItem = $('.comment').length;
+    let addItem = $('.com')
+//Pedir los mensajes al servidor
+    $("#btn").click(function () {
+      let currentItem = $('.comment').length;
+      $.ajax({
+        url: '{% url "load" %}',
+        type: 'GET',
+        data: {
+          'total_item': currentItem,
+          'post_id': `{{post.id}}`
+        },
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+
+          num = num + response.data.length
+//Comprueba si hay mas comentarios, sino elimina el boton cargar mas comentarios
+          if (num <= parseInt(`{{total_comments}}`)) {
+            response.data.forEach(element => {
+              if (num != parseInt(`{{total_comments}}`)) {
+                addElement(element);
+              } else {
+                addElement(element);
+                $('#btn').hide();
+                console.log('fin')
+              }
+            })
+          }
+
+        },
+        error: function (error) {
+          console.log(error);
+        }
+      })
+    });
+  });
+  /*
+    Recibe el objeto, transforma la fecha y añade el comentario
+  */
+  function addElement(element) {
+    let addItem = $('.com')
+
+    //Convertir fecha
+    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+    const fecha = new Date(element.date_added)
+    let date = (fecha.getDate() + ' de ' + meses[fecha.getMonth()] + ' de ' + fecha.getUTCFullYear() + ' a las ' + fecha.getHours() + ':' + fecha.getMinutes());
+    //Añadir el comentario
+    addItem.append(
+      `<div class="container mt-2 comment">
+                  <div class="d-flex justify-content-center row">
+                      <div class="col-md-8">
+                          <div class="d-flex flex-column comment-section">
+                              <div class="bg-white p-2">
+                                  <div class="d-flex flex-row user-info">
+                                      <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">${element.name}</span><span class="date text-black-50">${date}</span></div>
+                                  </div>
+                                  <div class="mt-2">
+                                      <p class="comment-text">${element.body}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>`);
+  }
 </script>
 {% endblock %}

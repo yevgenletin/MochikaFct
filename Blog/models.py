@@ -28,7 +28,8 @@ class Post(models.Model):
         contenido = models.TextField(max_length=4000)
         thumbnail = models.ImageField(upload_to='media/thumbnail/%Y/%m/%d/', null=True, blank=True)
         ingredientes = models.TextField(max_length=4000)
-        valor = models.IntegerField()
+        likes = models.ManyToManyField(User, related_name='blog_post')
+        
 
         @property
         def thumbnail_preview(self):

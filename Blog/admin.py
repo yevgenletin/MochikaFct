@@ -24,7 +24,7 @@ class PostAdmin(admin.ModelAdmin):
                 'contenido', 
                 'ingredientes',
                 'autor',
-                "valor",
+                "likes",
                 'thumbnail'
                 )
         }),
