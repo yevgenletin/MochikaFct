@@ -3,14 +3,6 @@
 {% load static %}
 {% block content %}
 
-  
-<style>
-  .alert{
-    position: fixed ;
-    top: 10px;
-    z-index: 999;
-  }
-</style>
 
 <!--
   https://codepen.io/lefourbefromage/pen/qBbZWEJ
@@ -49,7 +41,7 @@
       <th></th>
       <th>Valor</th>
     </tr>
-
+<!--Listar los favoritos-->
     {% for item in favoritos %}
     <tr>
       <td id="{{item.id}}"><a href="/ListadoProductos/{{item.id_producto}}">{{item.name}}</a></td>
@@ -67,6 +59,7 @@
       </td>
     </tr>
     {% endfor %}
+    <!--Si no hay favoritos -->
     {% else %}
     <p class="col-xs-12 m-5">No hay favoritos</p>
     {%endif%}
@@ -74,6 +67,7 @@
 </div>
 </div>
 <script>
+  //Mostrar el mensaje 
   $(document).ready(function() {
     showAlert();
   function showAlert() {
@@ -82,38 +76,5 @@
     });
   }
 });
-
-  /*$(document).on("click", ".open-AddBookDialog", function () {
-     var myBookId = $(this).data('id');
-     $(".modal-body #bookId").val( myBookId );
-});
-    function del(id){
-      console.log(id);
-    }*/
-  /* function remove(e){
-     e.preventDefault();
- id = e.id;
-   
-        $.ajax({
-         
-            url: '/Favoritos/delete-favoritos/',
-            data: {
-                'id': id,  
-            },
-            dataType: 'json',
-            success: function (data) {
-             $("#"+id).remove();
- //Aviso cuando se actualizo el registro
-             $('#alert').fadeIn(); 
-             console.log(data)            
-             console.log(e.id)            
-            }
-        });
-       }
-
-     */
-</script>
-<script>
-
 </script>
 {% endblock %}

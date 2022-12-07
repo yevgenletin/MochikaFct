@@ -1,7 +1,9 @@
-#alert {
-    display: none;
-  }
 
+.alert{
+  position: fixed ;
+  top: 10px;
+  z-index: 999;
+}
   a {
     font-family: 'Righteous';
     color: #575756;
