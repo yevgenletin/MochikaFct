@@ -1,5 +1,5 @@
 from django.contrib import admin
 from .models import Favoritos
-# Register your models here.
+# Registrar el modelo al panel de administracion
 
 admin.site.register(Favoritos)

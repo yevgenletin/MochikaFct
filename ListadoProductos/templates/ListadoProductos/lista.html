@@ -2,6 +2,7 @@
 {% extends "Home/base.html" %}
 {% block title %} Listado de productos {% endblock %}
 {% load static %}
+
 {% block content %}
   <!--style lista.css-->
   <div class="row">
@@ -42,53 +43,60 @@
     <tbody id="box">
     </tbody>
   </table>
-  <script>
+  
+ <script>
+  
+$(document).ready(function (){
     const data = '{{qs_json}}'
-    const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
-    const input = document.getElementById("search")
-    let filteredArr = []
+  const rdata = JSON.parse(data.replace(/&quot;/g, '"'))
+  const input = document.getElementById("search")
+  let filteredArr = []
 
-    input.addEventListener('keyup', (e) => {
-      box.innerHTML = "";
-      filteredArr = rdata.filter(info => info['name'].includes((e.target.value).toLowerCase()))
+  input.addEventListener('keyup', (e) => {
+    box.innerHTML = "";
+    filteredArr = rdata.filter(info => info['name'].includes((e.target.value).toLowerCase()))
 
-      if (filteredArr.length > 0) {
-        filteredArr.map(info => {
-          let color = "verde";
-          let fructosa = info['fructosa'];
-          let lactosa = info['lactosa'];
-          let manitol = info['manitol'];
-          let sorbitol = info['sorbitol'];
-          let gos = info['gos'];
-          let fructano = info['fructano'];
-          let arr = [fructosa, lactosa, manitol, sorbitol, gos, gos, fructano]
+    if (filteredArr.length > 0) {
+      filteredArr.map(info => {
+        let color = "verde";
+        let fructosa = info['fructosa'];
+        let lactosa = info['lactosa'];
+        let manitol = info['manitol'];
+        let sorbitol = info['sorbitol'];
+        let gos = info['gos'];
+        let fructano = info['fructano'];
+        let arr = [fructosa, lactosa, manitol, sorbitol, gos, gos, fructano]
 
-          //Dibujar las celdas de colores
-          arr.forEach(element => {
-            if (element[0] === 'amarillo' && color === 'verde') {
-              color = "amarillo";
-            }
-            if (element[0] === 'rojo') {
-              color = "rojo";
-            }
-          });
-          //Añadir los productos a la tabla
-          box.innerHTML += ` 
-        <tr>
-          <td id="name"><a href="${info['id']}">${info['name']}</a></td>
-          <td class="${info['fructosa']}-table opcion" ></td>
-          <td class="${info['lactosa']}-table opcion"></td>
-          <td class="${info['manitol']}-table opcion"></td>
-          <td class="${info['sorbitol']}-table opcion"></td>
-          <td class="${info['gos']}-table opcion"></td>
-          <td class="${info['fructano']}-table opcion"></td>
-          <td class="opcion">${info['gr']} </td>
-          <td class="${color}-table opcion2"> </td>
-        </tr>`
-        })
-      } else {
-        box.innerHTML += `<br>No hay resultados</b></br>`
-      }
-    })
-  </script>
+        //Dibujar las celdas de colores
+        arr.forEach(element => {
+          if (element[0] === 'amarillo' && color === 'verde') {
+            color = "amarillo";
+          }
+          if (element[0] === 'rojo') {
+            color = "rojo";
+          }
+        });
+        //Añadir los productos a la tabla
+        box.innerHTML += ` 
+      <tr>
+        <td id="name"><a href="${info['id']}">${info['name']}</a></td>
+        <td class="${info['fructosa']}-table opcion" ></td>
+        <td class="${info['lactosa']}-table opcion"></td>
+        <td class="${info['manitol']}-table opcion"></td>
+        <td class="${info['sorbitol']}-table opcion"></td>
+        <td class="${info['gos']}-table opcion"></td>
+        <td class="${info['fructano']}-table opcion"></td>
+        <td class="opcion">${info['gr']} </td>
+        <td class="${color}-table opcion2"> </td>
+      </tr>`
+      })
+    } else {
+      box.innerHTML += `<br>No hay resultados</b></br>`
+    }
+  })
+});
+
+ </script>
   {% endblock %}
+
+ 
