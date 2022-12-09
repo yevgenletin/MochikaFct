@@ -40,7 +40,7 @@
 -->
 <body>
 	<div id="colorlib-page">
-	<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 			<aside id="colorlib-aside" role="complementary" class="js-fullheight">
 				<img id="logo" src="{% static 'Home/img/logo_mochika.svg'%}" alt="logo" loading="lazy">
 				<nav id="colorlib-main-menu" role="navigation">
@@ -72,7 +72,7 @@
 						</li>
 						{% endif %}
 					</ul>
-					 <!-- Uuarios -->
+					 <!-- Usuarios -->
 					{%if user.is_authenticated%}
 						<p>{{user.username}}</p>
 						<a href="{% url 'cerrar_sesion' %}" title=""><i class="fa fa-user"></i> Cerrar sesion</a>
@@ -95,20 +95,19 @@
 					</p>
 				</nav>
 			</aside> <!-- FIN COLORLIB-ASIDE -->
-
+			<!--Contenido-->
 			<div id="colorlib-main">
-				<section class="ftco-section pt-4 mb-5 ftco-intro">
+				<section id="content-body" class="ftco-section pt-4 mb-5 ftco-intro">
 					<div class="container-fluid px-3 px-md-0">
 						{% block content %}
 						 <!-- CONTENIDO DE LAS PAGINAS -->
 						{% endblock %}
 					</div>
 				</section>
-				
 			</div><!-- FIN COLORLIB-PAGE -->
 		</div>
-	</div>
-	
+
+	<!--scripts-->
 	<script src="{% static 'Home/js/popper.js' %}"></script>
 	<script src="{% static 'Home/js/bootstrap.min.js' %}"></script>
 	<script src="{% static 'Home/js/jquery.min.js' %}"></script>
@@ -116,8 +115,6 @@
 	<script src="{% static 'Home/js/jquery.waypoints.min.js' %}"></script>
 	<script src="{% static 'Home/js/infinite.min.js' %}"></script>
 	<script src="{% static 'Home/js/main.js' %}"></script>
-	<script src="{% static 'Home/js/lista.js' %}"></script>
-	
 </body>
 
 </html>

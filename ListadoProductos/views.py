@@ -7,7 +7,7 @@ import datetime
 from ListadoProductos.models import Listado
 from Favoritos.models import Favoritos
 
-
+#Renderiza el listado de alimentos
 class InfoListView(ListView):
     model = Listado
     template_name = "ListadoProductos/lista.html/"
@@ -22,6 +22,7 @@ class InfoListView(ListView):
         context["qs_json"] = json.dumps(list(Listado.objects.values()), default=defaultconverter)
         return context
 
+#Renderiaza el alimento seleccionado
 def alimento(request, alimento_id):
     
     listado = Listado.objects.get(id = alimento_id)
@@ -35,7 +36,7 @@ def alimento(request, alimento_id):
     
     return render(request, "ListadoProductos/alimento.html/", {'listado': listado, 'favoritos': favoritos, 'img': img})
 
-
+#Guardar en favoritos
 def addrecord(request, id, name):
   member = Favoritos(id_producto=id, id_user=request.user.id, name = name)
   member.save()

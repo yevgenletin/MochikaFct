@@ -24,22 +24,20 @@
   <div class="texto-header">
   <h1>{{ listado.name }}</h1>
   </div>
-          <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
-              <path d="M0.00,49.99 C229.91,158.39 311.51,-47.85 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(248 249 250);">
-               </path></svg>
-          </div>
-          {% if user.is_authenticated %}
-          {% if favoritos %}
-          <div id="check">
-              <a href="{% url 'favoritos:favoritos' %}"><img id="estrella" class="img-responsive fa-icon" alt="favorito" src="{% static 'Home/img/cheque.png'%}" loading="lazy"></a></h1>
-          </div>
-          {% endif %}
-        {% endif %}
-  </header>
-  <div class="row col-xs-12 section-container-spacer">
-
-</div>
-<table class="container ">
+  <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+      <path d="M0.00,49.99 C229.91,158.39 311.51,-47.85 500.00,49.99 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(248 249 250);">
+        </path></svg>
+  </div>
+  {% if user.is_authenticated %}
+    {% if favoritos %}
+    <div id="check">
+        <a href="{% url 'favoritos:favoritos' %}"><img id="estrella" class="img-responsive fa-icon" alt="favorito" src="{% static 'Home/img/cheque.png'%}" loading="lazy"></a></h1>
+    </div>
+    {% endif %}
+  {% endif %}
+</header>
+  <!-- Tabla -->
+<table id="container-tabla" class="container ">
   <thead>
     <tr>
       <th>
@@ -59,7 +57,6 @@
   <tbody>
     <tr>
       <td>fructosa</td>
-      
       <td class="{{listado.fructosa}}"></td>
       <td class="{{listado.fructosaAmarillo}}"></td>
       <td class="{{listado.fructosaRojo}}"></td>
@@ -101,10 +98,6 @@
     </tr>
   </tbody>
 </table>
-<div class="row col-xs-12 opcion section-container-spacer">
-  
-</div>
-
    <!-- Imagen con los avisos -->
   <div class="row g-0 bg-light position-relative my-4">
       <img class="rounded col-md-10 col-lg-6 d-md-block" alt="Imagen alimento" src="{{listado.thumbnail.url}}" loading="lazy">
@@ -129,29 +122,29 @@
       <!-- Seleccionar la cara -->
     {% if favoritos.valor == 1 %}
       <div class="col">
-        <a><img id="mareado" src="{% static 'Home/img/face/005-mareado-1.ico'%}" alt="icono-mareado" loading="lazy"/></a>
-        <a><img id="aburrido" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
-        <a><img id="sonreir" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
+        <a><img id="mareado"  class="iconos-face" src="{% static 'Home/img/face/005-mareado-1.ico'%}" alt="icono-mareado" loading="lazy"/></a>
+        <a><img id="aburrido"  class="iconos-face" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+        <a><img id="sonreir"  class="iconos-face" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
       </div>    
     {% endif %}
     {% if favoritos.valor == 2 %}
     <div class="col">
-      <a><img id="mareado"src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
-      <a><img id="aburrido"src="{% static 'Home/img/face/006-aburrido-6.png'%}" alt="icono-aburrido" loading="lazy"/></a>
-      <a><img id="sonreir"src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
+      <a><img id="mareado" class="iconos-face" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
+      <a><img id="aburrido" class="iconos-face" src="{% static 'Home/img/face/006-aburrido-6.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+      <a><img id="sonreir" class="iconos-face" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
     </div>
     {% endif %}
     {% if favoritos.valor == 3 %}
     <div class="col">
-      <a><img id="mareado" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
-      <a><img id="aburrido" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
-      <a><img id="sonreir" src="{% static 'Home/img/face/004-sonrer-4.png'%}" alt="icono-sonreir" loading="lazy"/></a>
+      <a><img id="mareado"  class="iconos-face" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
+      <a><img id="aburrido"  class="iconos-face" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+      <a><img id="sonreir"  class="iconos-face" src="{% static 'Home/img/face/004-sonrer-4.png'%}" alt="icono-sonreir" loading="lazy"/></a>
     </div>
     {% endif %}
     {% if favoritos.valor != 1 and favoritos.valor != 2 and favoritos.valor !=  3%}
-      <a><img id="mareado" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
-      <a><img id="aburrido"src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
-      <a><img id="sonreir" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
+      <a><img id="mareado"  class="iconos-face" src="{% static 'Home/img/face/002-mareado.png'%}" alt="icono-mareado" loading="lazy"/></a>
+      <a><img id="aburrido" class="iconos-face" src="{% static 'Home/img/face/001-aburrido.png'%}" alt="icono-aburrido" loading="lazy"/></a>
+      <a><img id="sonreir"  class="iconos-face" src="{% static 'Home/img/face/003-sonreir.png'%}" alt="icono-sonreir" loading="lazy"/></a>
     {% endif %}
   </div>
 </div>

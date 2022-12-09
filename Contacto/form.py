@@ -4,6 +4,7 @@ from crispy_forms.layout import Submit
 from django.urls import reverse_lazy
 from pprint import pprint
 
+#Formulario de la pagina contacto
 class Formulario(forms.Form):
 
     name = forms.CharField(label="nombre:", required=True, widget=forms.TextInput)

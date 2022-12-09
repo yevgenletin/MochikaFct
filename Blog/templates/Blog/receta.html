@@ -4,20 +4,6 @@
 {% load static %}
 {% block content %}
 <!--style blog.css-->
-<style>
-  #descarga {
-    cursor: pointer;
-  }
-  #btn{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-
-  }
-  #btn img{
-    width: 2em;
-  }
-</style>
 <header id="header-receta">
   <div class="texto-header">
     <h1>{{post.name}}</h1>
@@ -31,7 +17,7 @@
   </div>
 </header>
 <main>
-
+  <!--iconos-->
   <div class="container-receta">
     <div class="card">
       <img src="{% static 'Home/img/recetas/tiempo.png'%}" alt="tiempo" loading="lazy" />
@@ -64,26 +50,30 @@
       <p>{{post.sal}}</p>
     </div>
   </div>
+  <!--ingredientes-->
   <div id="body_pdf">
     <section class="contenedor">
       <div class="contenedor-recetas" alt="">
         <div class="row g-0 bg-light col-12 position-relative my-4">
           <img class="col-xs-10 col-md-6 p-4 m-2" src="{{post.thumbnail.url}}" />
-
           <div class="col-xs-11 col-md-5 p-3 m-2">
             <div class="contenido-ingredientes">
               <div id="pdf">
-                <h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}" alt="pdf" loading="lazy" />
+                <h2>ingredientes</h2><img id="descarga" src="{% static 'Home/img/recetas/pdf.png'%}" alt="pdf"
+                  loading="lazy" />
               </div>
-              <ul>
+              <table>
                 {% for values, key in ingredientes.items %}
-                <li><span class="negrita">{{key}}</span> {{values}}</li>
-                {% endfor %}
-              </ul>
+                <tr>
+                  <td><span class="negrita">{{key}}</span></td>
+                  <td id="ingredientes-td"></td>
+                  <td>{{values}}</td>
+                </tr>
+              {% endfor %}
+            </table>
             </div>
           </div>
         </div>
-
       </div>
       <div class="contenido-preparacion">
         <h2>Preparación</h2>
@@ -100,6 +90,8 @@
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">
     <img class="icons" src="{% static 'Home/img/recetas/estrella.png'%}">-->
+
+<!--Comentarios-->
 <h4>Comentarios</h4>
 {% if user.is_authenticated %}
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
@@ -108,6 +100,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
   data-whatever="@getbootstrap" disabled>Añadir comentario</button>
 {% endif %}
+<!--Modal para crear un mensaje nuevo-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -119,7 +112,6 @@
         </button>
       </div>
       <div class="modal-body">
-
         <form id="msg" action="/Blog/comentario/{{post.id}}/" method="POST">
           {% csrf_token %}
           <div class="form-group">
@@ -133,12 +125,7 @@
         <button id="enviar" type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </div>
-    <div class="modal-footer">
-
-
-    </div>
   </div>
-</div>
 </div>
 {% if not post.comments.all %}
 No hay comentarios aun
@@ -174,12 +161,9 @@ No hay comentarios aun
 {%endif%}
 </div>
 </div>
-<!-------------------------------------------->
-
-
+<!-------------------JQUERY------------------------->
 <script>
-  $(document).ready(function () {
-    
+$(document).ready(function () {
 //Descargar la pagina en pdf
     $("#descarga").click(function () {
       const $elementoParaConvertir = document.querySelector('body');
@@ -210,15 +194,16 @@ No hay comentarios aun
           console.log('guardado')
         });
     });
-//Añadir comentario 
+    //Añadir comentario 
     $('#enviar').click(function () {
       $('#msg').submit();
     })
-//Variables
+    //Variables
     let num = 5;
     let currentItem = $('.comment').length;
     let addItem = $('.com')
-//Pedir los mensajes al servidor
+
+    //Pedir los mensajes al servidor, y mostrar mas comentarios
     $("#btn").click(function () {
       let currentItem = $('.comment').length;
       $.ajax({
@@ -234,7 +219,7 @@ No hay comentarios aun
         success: function (response) {
 
           num = num + response.data.length
-//Comprueba si hay mas comentarios, sino elimina el boton cargar mas comentarios
+          //Comprueba si hay mas comentarios, sino elimina el boton cargar mas comentarios
           if (num <= parseInt(`{{total_comments}}`)) {
             response.data.forEach(element => {
               if (num != parseInt(`{{total_comments}}`)) {
@@ -259,7 +244,6 @@ No hay comentarios aun
   */
   function addElement(element) {
     let addItem = $('.com')
-
     //Convertir fecha
     const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
@@ -282,7 +266,8 @@ No hay comentarios aun
                           </div>
                       </div>
                   </div>
-              </div>`);
+              </div>`
+              );
   }
 </script>
 {% endblock %}

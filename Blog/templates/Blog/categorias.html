@@ -1,84 +1,53 @@
-
 {% extends "Home/base.html" %}
 {% block title %} Inicio {% endblock %}
 {% load static %}
 {% block content %}
-  <!--style blog.css-->
-  <style>
-    
-.texto{
-    background-color: #008CBA;
-}
-  </style>
-  <section>
-    <div class="col-xs-12 col-md-12 section-container-spacer">
-      <div class="dropdown">
-        
-        <div id="categorias" class="dropdown show">
-          
-          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categorias
-          </a>
-          
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#"></a>
-            {% for categoria in categorias %}
-              <a class="dropdown-item" href="{% url 'categoria' categoria.id %}">{{categoria.name}}</a>
-            {%endfor%}
-          </div>
+<!--style blog.css-->
+<section id="section-categoria">
+  <div class="col-xs-12 col-md-12 section-container-spacer">
+    <div class="dropdown">
+      <div id="categorias" class="dropdown show">
+        <!--Muestra dropdown de las categorias-->
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Categorias
+        </a>
+        <div id="dropdown-body" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="#"></a>
+          {% for categoria in categorias %}
+          <a class="dropdown-item" href="{% url 'categoria' categoria.id %}">{{categoria.name}}</a>
+          {%endfor%}
         </div>
       </div>
     </div>
-  </section>
-  <div class="row">
- 
-  
-</div>
+  </div>
+</section>
 
+<!--Muestra la galeria de imagenes-->
 <div class="container">
   <div class="row infinite-container">
-      {% for post in posts %}
-          <div class="col-md-6 col-lg-4 infinite-item">
-              <div class="mb-4 shadow-sm">
-                  <img class="img-thumbnail"  src="{{post.thumbnail.url}}" alt="imagen receta" loading="lazy" />
-                  
-                    <a href="{% url 'receta' post.id %}" class="text">{{post.name}}</a>
-                  
-              </div>
-          </div>
-      {% endfor %}
+    {% for post in posts %}
+    <div id="section" class="col-md-6 col-lg-4 infinite-item">
+      <div class="mb-4 shadow-sm">
+        <img class="img-thumbnail" src="{{post.thumbnail.url}}" alt="imagen receta" loading="lazy" />
+        <a href="{% url 'receta' post.id %}" class="text">{{post.name}}</a>
+      </div>
+    </div>
+    {% endfor %}
   </div>
   {% if page_obj.has_next %}
   <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
   {% endif %}
-  
 </div>
-
 <script>
-
-
-</script>
-<script>
-  $(document).ready(function(){
+  //Scroll Infinito para visualizar la galeria de imagenes
+  $(document).ready(function () {
     var infinite = new Waypoint.Infinite({
-element: $('.infinite-container')[0],
-handler: function(direction) {
-
-},
-offset: 'bottom-in-view',
-
-onBeforePageLoad: function () {
-$('.spinner-border').show();
-},
-onAfterPageLoad: function () {
-$('.spinner-border').hide();
-}
-
-});
-  $('.dropdown-toggle').click(function(){
-    console.log("sfalkñjfkasjfña")
-  })
+      element: $('.infinite-container')[0],
+      handler: function (direction) {
+      },
+      offset: 'bottom-in-view',
+    });
   });
-
 </script>
 {% endblock %}

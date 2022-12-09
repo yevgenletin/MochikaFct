@@ -3,6 +3,7 @@ from django.db import models
 from multiselectfield import MultiSelectField
 
 
+# Modelo de Alimento
 class Listado(models.Model):
 
     ELEMENT = (('verde', 'verde',),

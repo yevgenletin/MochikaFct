@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Listado
 
 
-# Register your models here.
+# Registro en el panel de admin
 
 class ListadoAdmin(admin.ModelAdmin):
     readonly_fields = ("updated", "created")

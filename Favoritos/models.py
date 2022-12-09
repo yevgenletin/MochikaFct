@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Modelo Favoritos
 
+# Modelo Favoritos
 class Favoritos(models.Model):
     id_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     id_producto = models.IntegerField(blank=False, null=False)

@@ -3,17 +3,17 @@
   }
   #header-receta{
     width: 100%;
-    height: 600px;
+    height: 430px;
+    font-size: 16px;
      background: #232526;  /* fallback for old browsers */
-     background: -webkit-linear-gradient(to right, hsla(210, 3%, 26%, 0.568), hsla(200, 4%, 14%, 0.525)), url({{post.thumbnail.url}});
+     background: -webkit-linear-gradient(to right, hsla(210, 3%, 26%, 0.568), hsla(200, 4%, 14%, 0.525)), url('/static/Home/img/garden_back.avif');
      /* Chrome 10-25, Safari 5.1-6 */
-     background: linear-gradient(to right, hsla(210, 3%, 26%, 0.584), hsla(200, 4%, 14%, 0.545)), url({{post.thumbnail.url}});
+     background: linear-gradient(to right, hsla(210, 3%, 26%, 0.584), hsla(200, 4%, 14%, 0.545)), url('/static/Home/img/garden_back.avif');
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
-
+    background-attachment: fixed;
     position: relative;
 }
-
 .text {
   color: white;
   font-size: 20px;
@@ -25,10 +25,28 @@
   transform: translate(-50%, -50%);
   text-align: center;
   background: rgba(0,0,0,0.5);
-  
 }
-
 #categorias{
   float: right;
   margin-bottom: 3%;
+}
+.texto{
+  background-color: #008CBA;
+}
+#section-categoria{
+  z-index: 999;
+}
+#descarga {
+  cursor: pointer;
+}
+#btn{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+#btn img{
+  width: 2em;
+}
+#dropdown-body{
+  z-index: 999;
 }

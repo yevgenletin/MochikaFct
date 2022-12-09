@@ -7,7 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import Vregistro, cerrar_sesion, login
 
-
+##Url
 urlpatterns = [
     path('', Vregistro.as_view(), name="autentificacion"),
     path('cerrar_sesion', cerrar_sesion, name="cerrar_sesion"),

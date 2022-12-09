@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from pprint import pprint
 from .models import Comment
 
+#Formulario de modal mensaje
 class MessageForm(forms.Form):
     class Meta:
         model = Comment

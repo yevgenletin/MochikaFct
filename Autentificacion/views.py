@@ -5,10 +5,6 @@ from django.contrib.auth import logout, authenticate
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 
-
-##def autentificacion(request):
-##    return render (request, "Autentificacion/auth.html")
-
 ##Renderiza la hoja de registro de usuario.
 class Vregistro(View):
         def get(self, request):
