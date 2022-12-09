@@ -242,10 +242,7 @@ margin-left: 20%;
     .container-receta{
         margin-bottom: 0px;
     }
-    .container .card{
-        height: 140px;
-        width: 80px;
-    }
+    
     #contenedor-icon{
         align-items: center;
     }
@@ -278,7 +275,6 @@ margin-left: 20%;
         
     }
     .container .card{
-        height: 140px;
         overflow: hidden;
         transition: 0.4s;
     }
