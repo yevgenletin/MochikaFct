@@ -7,20 +7,22 @@
   <!--style alimento.css-->
 
    <!--Aviso actualizacion alimento -->
-<div id="alert" class="col-xs-12 fixed-top alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Se actualizo el elemento</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div id="save" class="col-xs-12 fixed-top alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Se guardo el elemento en favoritos</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+   
 <!-- Cabecera-->
 <header>
+  <div id="alert" class="col-xs-8  fixed-top alert alert-success " role="alert">
+    <strong>Se actualizo el elemento</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div id="save" class="col-xs-8 fixed-top alert alert-success alert-dismissible" role="alert">
+    <strong>Se guardo el elemento en favoritos</strong>
+    
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="texto-header">
   <h1>{{ listado.name }}</h1>
   </div>
@@ -277,6 +279,7 @@
               //muestra el mensaje success
               $('#sub').show();
               $('#sub_upd').hide()
+
               $('#alert').fadeIn();     
                 setTimeout(function() {
                 $("#alert").fadeOut();           

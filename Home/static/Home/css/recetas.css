@@ -1,19 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Cabin:400,700|Source+Sans+Pro:400,700');
 
-#comentarios{
-    resize: none;
-    margin:30px ;
- }
-
 *{
     margin: 0;
     padding: 0;
     font-family: Source Sans Pro,Helvetica,Arial,sans-serif;
 }
 
-/* header*/
+#comentarios{
+    resize: none;
+    margin:30px ;
+ }
 
+/* header*/
 
 header .texto-header{
     display: flex;
@@ -279,7 +278,6 @@ margin-left: 20%;
         transition: 0.4s;
     }
     
-
     }
 
  
